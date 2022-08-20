@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FoodManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADDTOCART">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERID" Type="int" />
+          <Property Name="TYPEID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="PRICE" Type="int" />
+        </EntityType>
+        <EntityType Name="FOOD_ITEM">
+          <Key>
+            <PropertyRef Name="FOODID" />
+          </Key>
+          <Property Name="FOODID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FOOD_TYPE">
+          <Key>
+            <PropertyRef Name="TYPEID" />
+          </Key>
+          <Property Name="TYPEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FOODID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PRICE" Type="int" Nullable="false" />
+          <Property Name="QUANTITY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_REGISTRATION">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MOBILE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ADDTOCART__PRICE__2D27B809">
+          <End Role="USER_REGISTRATION" Type="Self.USER_REGISTRATION" Multiplicity="0..1" />
+          <End Role="ADDTOCART" Type="Self.ADDTOCART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_REGISTRATION">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ADDTOCART">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ADDTOCART__TYPEI__2E1BDC42">
+          <End Role="FOOD_TYPE" Type="Self.FOOD_TYPE" Multiplicity="0..1" />
+          <End Role="ADDTOCART" Type="Self.ADDTOCART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOOD_TYPE">
+              <PropertyRef Name="TYPEID" />
+            </Principal>
+            <Dependent Role="ADDTOCART">
+              <PropertyRef Name="TYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FOOD_TYPE__FOODI__2A4B4B5E">
+          <End Role="FOOD_ITEM" Type="Self.FOOD_ITEM" Multiplicity="0..1" />
+          <End Role="FOOD_TYPE" Type="Self.FOOD_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOOD_ITEM">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="FOOD_TYPE">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FoodManagementModelStoreContainer">
+          <EntitySet Name="ADDTOCART" EntityType="Self.ADDTOCART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FOOD_ITEM" EntityType="Self.FOOD_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FOOD_TYPE" EntityType="Self.FOOD_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_REGISTRATION" EntityType="Self.USER_REGISTRATION" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ADDTOCART__PRICE__2D27B809" Association="Self.FK__ADDTOCART__PRICE__2D27B809">
+            <End Role="USER_REGISTRATION" EntitySet="USER_REGISTRATION" />
+            <End Role="ADDTOCART" EntitySet="ADDTOCART" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ADDTOCART__TYPEI__2E1BDC42" Association="Self.FK__ADDTOCART__TYPEI__2E1BDC42">
+            <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
+            <End Role="ADDTOCART" EntitySet="ADDTOCART" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FOOD_TYPE__FOODI__2A4B4B5E" Association="Self.FK__FOOD_TYPE__FOODI__2A4B4B5E">
+            <End Role="FOOD_ITEM" EntitySet="FOOD_ITEM" />
+            <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoodManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADDTOCART">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="Int32" />
+          <Property Name="TYPEID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="PRICE" Type="Int32" />
+          <NavigationProperty Name="USER_REGISTRATION" Relationship="Self.FK__ADDTOCART__PRICE__2D27B809" FromRole="ADDTOCART" ToRole="USER_REGISTRATION" />
+          <NavigationProperty Name="FOOD_TYPE" Relationship="Self.FK__ADDTOCART__TYPEI__2E1BDC42" FromRole="ADDTOCART" ToRole="FOOD_TYPE" />
+        </EntityType>
+        <EntityType Name="FOOD_ITEM">
+          <Key>
+            <PropertyRef Name="FOODID" />
+          </Key>
+          <Property Name="FOODID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FOOD_TYPE" Relationship="Self.FK__FOOD_TYPE__FOODI__2A4B4B5E" FromRole="FOOD_ITEM" ToRole="FOOD_TYPE" />
+        </EntityType>
+        <EntityType Name="FOOD_TYPE">
+          <Key>
+            <PropertyRef Name="TYPEID" />
+          </Key>
+          <Property Name="TYPEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FOODID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRICE" Type="Int32" Nullable="false" />
+          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ADDTOCARTs" Relationship="Self.FK__ADDTOCART__TYPEI__2E1BDC42" FromRole="FOOD_TYPE" ToRole="ADDTOCART" />
+          <NavigationProperty Name="FOOD_ITEM" Relationship="Self.FK__FOOD_TYPE__FOODI__2A4B4B5E" FromRole="FOOD_TYPE" ToRole="FOOD_ITEM" />
+        </EntityType>
+        <EntityType Name="USER_REGISTRATION">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MOBILE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ADDTOCARTs" Relationship="Self.FK__ADDTOCART__PRICE__2D27B809" FromRole="USER_REGISTRATION" ToRole="ADDTOCART" />
+        </EntityType>
+        <Association Name="FK__ADDTOCART__PRICE__2D27B809">
+          <End Role="USER_REGISTRATION" Type="Self.USER_REGISTRATION" Multiplicity="0..1" />
+          <End Role="ADDTOCART" Type="Self.ADDTOCART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_REGISTRATION">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ADDTOCART">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ADDTOCART__TYPEI__2E1BDC42">
+          <End Role="FOOD_TYPE" Type="Self.FOOD_TYPE" Multiplicity="0..1" />
+          <End Role="ADDTOCART" Type="Self.ADDTOCART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOOD_TYPE">
+              <PropertyRef Name="TYPEID" />
+            </Principal>
+            <Dependent Role="ADDTOCART">
+              <PropertyRef Name="TYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FOOD_TYPE__FOODI__2A4B4B5E">
+          <End Role="FOOD_ITEM" Type="Self.FOOD_ITEM" Multiplicity="0..1" />
+          <End Role="FOOD_TYPE" Type="Self.FOOD_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOOD_ITEM">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="FOOD_TYPE">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FoodManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADDTOCARTs" EntityType="Self.ADDTOCART" />
+          <EntitySet Name="FOOD_ITEM" EntityType="Self.FOOD_ITEM" />
+          <EntitySet Name="FOOD_TYPE" EntityType="Self.FOOD_TYPE" />
+          <EntitySet Name="USER_REGISTRATION" EntityType="Self.USER_REGISTRATION" />
+          <AssociationSet Name="FK__ADDTOCART__PRICE__2D27B809" Association="Self.FK__ADDTOCART__PRICE__2D27B809">
+            <End Role="USER_REGISTRATION" EntitySet="USER_REGISTRATION" />
+            <End Role="ADDTOCART" EntitySet="ADDTOCARTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ADDTOCART__TYPEI__2E1BDC42" Association="Self.FK__ADDTOCART__TYPEI__2E1BDC42">
+            <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
+            <End Role="ADDTOCART" EntitySet="ADDTOCARTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FOOD_TYPE__FOODI__2A4B4B5E" Association="Self.FK__FOOD_TYPE__FOODI__2A4B4B5E">
+            <End Role="FOOD_ITEM" EntitySet="FOOD_ITEM" />
+            <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoodManagementModelStoreContainer" CdmEntityContainer="FoodManagementEntities">
+          <EntitySetMapping Name="ADDTOCARTs">
+            <EntityTypeMapping TypeName="FoodManagementModel.ADDTOCART">
+              <MappingFragment StoreEntitySet="ADDTOCART">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FOOD_ITEM">
+            <EntityTypeMapping TypeName="FoodManagementModel.FOOD_ITEM">
+              <MappingFragment StoreEntitySet="FOOD_ITEM">
+                <ScalarProperty Name="FOODID" ColumnName="FOODID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FOOD_TYPE">
+            <EntityTypeMapping TypeName="FoodManagementModel.FOOD_TYPE">
+              <MappingFragment StoreEntitySet="FOOD_TYPE">
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="FOODID" ColumnName="FOODID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_REGISTRATION">
+            <EntityTypeMapping TypeName="FoodManagementModel.USER_REGISTRATION">
+              <MappingFragment StoreEntitySet="USER_REGISTRATION">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
