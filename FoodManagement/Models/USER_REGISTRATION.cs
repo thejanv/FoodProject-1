@@ -11,7 +11,9 @@ namespace FoodManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+
     public partial class USER_REGISTRATION
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +23,25 @@ namespace FoodManagement.Models
         }
     
         public int USERID { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
         public string NAME { get; set; }
+
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [DataType(DataType.EmailAddress)]
         public string EMAIL { get; set; }
+
+        [Required(ErrorMessage = "Mobile number is required")]
+        [StringLength(10, ErrorMessage = "Name must be 10 char")]
         public string MOBILE { get; set; }
+
+        [Required(ErrorMessage = "Password required")]
+        [Range(8, 16, ErrorMessage = "Please Provide correct range. It should be minimum 8 and not more than 16 ")]
+        [RegularExpression(@"^(?=.[A-Za-z])(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&-]).{8,15}$", ErrorMessage = "Password is not strong")]
         public string PASSWORD { get; set; }
+
+        [Required(ErrorMessage = "Address is required")]
         public string ADDRESS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
