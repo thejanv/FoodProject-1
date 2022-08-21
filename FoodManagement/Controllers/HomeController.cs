@@ -72,12 +72,14 @@ namespace FoodManagement.Controllers
                 }
                 else
                 {
+                    ViewBag.msg = "Please provide correct EMail and Password";
                     return View("Login");
                 }
 
             }
             else
             {
+                ViewBag.msg = "Please provide correct EMail and Password";
                 return View("Login");
             }
         }
