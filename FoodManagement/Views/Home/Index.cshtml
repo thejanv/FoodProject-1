@@ -1,0 +1,114 @@
+﻿@model FoodManagement.Models.USER_REGISTRATION
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+        <script>
+            function check() {
+                var password = document.getElementById("password").value;
+                var repassword = document.getElementById("repassword").value;
+
+                if (!password.match(repassword)) {
+                    document.getElementById("checkPassword").innerHTML = "Password and re-type password are not matched";
+                }
+               
+            }
+        </script>
+        <style>
+            .form-horizontal{
+                padding-top:10%;
+                padding-left:35%;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal" >
+                <h4>User Registration</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.NAME, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                Name
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                E-Mail
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.MOBILE, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                Mobile Number
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MOBILE, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MOBILE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                Password
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control", @id = "password" } })
+                    @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                <div class="form-group">
+                    Re-Type Password
+                    <div>
+                        <input type="password" id="repassword" name="repassword" />
+                        <p id="checkPassword"></p>
+                    </div>
+                    
+                    
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    Address
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" onclick="check()"/>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Home", "Index")
+        </div>
+    </body>
+</html>
+
+
+
