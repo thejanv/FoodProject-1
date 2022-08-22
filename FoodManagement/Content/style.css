@@ -36,7 +36,7 @@
 
 
 
-.home-btn, .signin-btn, .login-btn {
+.signin-btn, .login-btn {
     width: 100px;
     padding: 8px 0;
     outline: none;
@@ -46,11 +46,11 @@
     color: #fff;
     font-weight: 700;
     cursor: pointer;
-    transition: all .3s linear;
+    
 }
 
     .home-btn:hover, .signin-btn:hover, .login-btn:hover {
-        transform: scale(1.1);
+        
         background: var(--gradient);
         border: 2px solid var(--gradient);
         box-shadow: 0.5 1rem rgba(0,0,0,.1);
@@ -338,3 +338,8 @@ body {
         background: var(--gradient);
         border: 2px solid var(--gradient);
     }
+#login-error{
+    font-size:14px;
+    color:red;
+    text-align:center;
+}
