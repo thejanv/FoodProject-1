@@ -166,6 +166,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Front.cshtml" />
     <Content Include="Views\Shared\Layout_front.cshtml" />
+    <Content Include="Views\Home\Content.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
