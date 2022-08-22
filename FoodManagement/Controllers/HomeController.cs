@@ -22,13 +22,18 @@ namespace FoodManagement.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(USER_REGISTRATION user)
+        public ActionResult Index(USER_REGISTRATION user, string repassword)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && repassword == user.PASSWORD)
             {
                 food.USER_REGISTRATION.Add(user);
                 food.SaveChanges();
                 return RedirectToAction("Login");
+            }
+            else if(user.PASSWORD != repassword)
+            {
+                ViewBag.msg = "Password and re-type password are not matched";
+                return View(user);
             }
             else
             {

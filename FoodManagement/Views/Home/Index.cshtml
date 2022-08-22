@@ -25,95 +25,119 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-    <script>
+    @*<script>
         function check() {
             var password = document.getElementById("password").value;
             var repassword = document.getElementById("repassword").value;
 
             if (!password.match(repassword)) {
+                document.getElementById("checkPassword").style.color = "red";
                 document.getElementById("checkPassword").innerHTML = "Password and re-type password are not matched";
             }
 
         }
-    </script>
+    </script>*@
     <style>
     </style>
 
     <title>Food Train</title>
 </head>
-<body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+<body background="/Content/Images/food-bg-xl.png" class="#index-body">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container" id="signup-container">
+        <div class="myCard">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="myCtn">
+                        <form class="myForm text-center">
+                            <header>Create new account</header><br>
 
-        <div class="form-horizontal">
-            <h4>User Registration</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.NAME, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                Name
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                E-Mail
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"><i class="fa-solid fa-user"></i></div>
+                                    <div class="col-11">
+                                        @*<input type="text" class="form-control" placeholder="Enter name"/>*@
+                                        @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter name" } })
+                                        @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.MOBILE, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                Mobile Number
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MOBILE, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MOBILE, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"><i class="fa-solid fa-envelope"></i></div>
+                                    <div class="col-11">
+                                        @*<input type="email" class="form-control" placeholder="Enter email"/>*@
+                                        @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter email" } })
+                                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                Password
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control", @id = "password" ,@type="Password",@placeholder=""} })
-                    @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                Re-Type Password
-                <div>
-                    @Html.Editor("Repassword")
-                    @*<input type="password" id="repassword" name="repassword" />*@
-                    <p id="checkPassword"></p>
-                </div>
-            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"><i class="fa-solid fa-square-phone"></i></div>
+                                    <div class="col-11">
+                                        @*<input type="text" class="form-control" placeholder="Enter mobile number"/>*@
+                                        @Html.EditorFor(model => model.MOBILE, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter mobile number" } })
+                                        @Html.ValidationMessageFor(model => model.MOBILE, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                Address
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"><i class="fa-solid fa-lock"></i></div>
+                                    <div class="col-11">
+                                        @*<input type="password" class="form-control" placeholder="Enter password"/>*@
+                                        @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control", @id = "password", @Type = "password", @placeholder = "Enter password" } })
+                                        @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" onclick="check()" />
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"><i class="fa-solid fa-lock"></i></div>
+                                    <div class="col-11">
+                                        @*<input type="password" class="form-control" placeholder="Re-Type password"/>*@
+                                        <input type="password" id="repassword" name="repassword" placeholder="Re-Type password" class="form-control" />
+                                        <div id="checkPassword">@ViewBag.msg</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="col-11">
+                                        @*<input type="text" class="form-control" placeholder="Enter address"/>*@
+                                        @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter address" } })
+                                        @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="signup-instruction">
+                                <p><sup>*</sup>Password must contain atleast 8 characters, a capital letter, a simple letter, numbers & symbols</p>
+                            </div>
+
+                            <div class="form-group">
+                                @*<input type="button" class="buttn" value="CREATE ACCOUNT" id="signup-button" />*@
+                                <input type="submit" value="CREATE ACCOUNT" class="buttn" onclick="check()" id="signup-button" />
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Home", "Index")
     </div>
-
+}
 </body>
 </html>
 
