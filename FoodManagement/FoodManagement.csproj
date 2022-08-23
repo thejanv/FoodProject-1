@@ -97,7 +97,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\food-bg-xl.png" />
+    <Content Include="Content\Images\bg.jpg" />
+    <Content Include="Content\Images\food.png" />
     <Content Include="Content\Images\Fried_rice.jpg" />
     <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\restaurant.jpg" />
