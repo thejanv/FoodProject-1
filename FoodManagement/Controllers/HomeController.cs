@@ -40,13 +40,23 @@ namespace FoodManagement.Controllers
                 return View(user);
             }
         }
-        [Authorize]
-        public ActionResult Content()
-        {
 
-            return View();
+        // [Authorize]
+        public ActionResult Content(string name)
+        {
+            if (name != null)
+            {
+                var item = from v in food.FOOD_TYPE
+                           where v.NAME.StartsWith(name)
+                           select v;
+                return View(item);
+            }
+            else
+            {
+                return View(food.FOOD_TYPE.ToList());
+            }
         }
-        
+
         //[ValidateAntiForgeryToken]
         public ActionResult Login()
         {
@@ -73,7 +83,7 @@ namespace FoodManagement.Controllers
                 }
                 if (count > 0)
                 {
-                    return View("Content");
+                    return RedirectToAction("Content");
                 }
                 else
                 {
