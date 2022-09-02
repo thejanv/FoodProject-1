@@ -42,7 +42,7 @@
 
     <title>Food Train</title>
 </head>
-<body background="/Content/Images/food.png" class="#index-body">
+<body @*background="/Content/Images/food.png"*@ class="#index-body">
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

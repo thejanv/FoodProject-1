@@ -40,31 +40,48 @@ namespace FoodManagement.Controllers
                 return View(user);
             }
         }
-        [Authorize]
-        public ActionResult Content()
-        {
-
-            return View();
-        }
+        //[Authorize]
         
-        //[ValidateAntiForgeryToken]
-        public ActionResult Login()
+        public new ActionResult Content(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return View(food.FOOD_TYPE.ToList());
+            }
+            else
+            {
+                var data = from item in food.FOOD_TYPE where item.NAME.StartsWith(search.ToUpper()) select item;
+                return View(data);
+            }
+        }
+
+
+        //public ActionResult Display(string search)
+        //{
+        //    if (string.IsNullOrEmpty(search))
+        //    {
+        //        return View(food.FOOD_TYPE.ToList());
+        //    }
+        //    else
+        //    {
+        //        var data = from item in food.FOOD_TYPE where item.NAME.StartsWith(search.ToUpper()) select item;
+        //        return View(data);
+        //    }
+        //}
+
+
+        
+        public ActionResult Login(string email,string password)
         {
 
-            return View();
-        }
-        [ValidateAntiForgeryToken]
-        public ActionResult Authenticate()
-        {
-            if (ModelState.IsValid)
-            {
+            
                 var data = food.USER_REGISTRATION.ToList();
                 int count = 0;
 
                 foreach (USER_REGISTRATION item in data)
                 {
 
-                    if (Request.Form["email"].Equals(item.EMAIL) && Request.Form["password"].Equals(item.PASSWORD))
+                    if (email.Equals(item.EMAIL) && password.Equals(item.PASSWORD))
                     {
 
                         count++;
@@ -82,11 +99,41 @@ namespace FoodManagement.Controllers
                 }
 
             }
-            else
-            {
-                ViewBag.msg = "Please provide correct E-Mail and Password";
-                return View("Login");
-            }
+           
         }
+        
+        //public ActionResult Authenticate()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var data = food.USER_REGISTRATION.ToList();
+        //        int count = 0;
+
+        //        foreach (USER_REGISTRATION item in data)
+        //        {
+
+        //            if (Request.Form["email"].Equals(item.EMAIL) && Request.Form["password"].Equals(item.PASSWORD))
+        //            {
+
+        //                count++;
+        //            }
+
+        //        }
+        //        if (count > 0)
+        //        {
+        //            return View("Content");
+        //        }
+        //        else
+        //        {
+        //            ViewBag.msg = "Please provide correct E-Mail and Password";
+        //            return View("Login");
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        ViewBag.msg = "Please provide correct E-Mail and Password";
+        //        return View("Login");
+        //    }
+        //}
     }
-}
