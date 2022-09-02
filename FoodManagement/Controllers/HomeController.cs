@@ -40,38 +40,31 @@ namespace FoodManagement.Controllers
                 return View(user);
             }
         }
-        //[Authorize]
-        
-        public new ActionResult Content(string search)
+
+        // [Authorize]
+        public ActionResult Content(string name)
         {
-            if (string.IsNullOrEmpty(search))
+            if (name != null)
             {
-                return View(food.FOOD_TYPE.ToList());
+                var item = from v in food.FOOD_TYPE
+                           where v.NAME.StartsWith(name)
+                           select v;
+                return View(item);
             }
             else
             {
-                var data = from item in food.FOOD_TYPE where item.NAME.StartsWith(search.ToUpper()) select item;
-                return View(data);
+                return View(food.FOOD_TYPE.ToList());
             }
         }
 
+        //[ValidateAntiForgeryToken]
+        public ActionResult Login()
+        {
 
-        //public ActionResult Display(string search)
-        //{
-        //    if (string.IsNullOrEmpty(search))
-        //    {
-        //        return View(food.FOOD_TYPE.ToList());
-        //    }
-        //    else
-        //    {
-        //        var data = from item in food.FOOD_TYPE where item.NAME.StartsWith(search.ToUpper()) select item;
-        //        return View(data);
-        //    }
-        //}
-
-
-        
-        public ActionResult Login(string email,string password)
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        public ActionResult Authenticate()
         {
 
             
@@ -90,7 +83,7 @@ namespace FoodManagement.Controllers
                 }
                 if (count > 0)
                 {
-                    return View("Content");
+                    return RedirectToAction("Content");
                 }
                 else
                 {
