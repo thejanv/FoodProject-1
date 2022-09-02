@@ -98,8 +98,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\bg.jpg" />
+    <Content Include="Content\Images\Favicon.ico" />
     <Content Include="Content\Images\food.png" />
     <Content Include="Content\Images\Fried_rice.jpg" />
+    <Content Include="Content\Images\GOODFOOD.png" />
     <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\restaurant.jpg" />
     <Content Include="Content\Site.css" />
