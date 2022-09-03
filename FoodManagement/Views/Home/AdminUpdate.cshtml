@@ -7,10 +7,10 @@
 <h2>AdminUpdate</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AdminUpdate", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>FOOD_TYPE</h4>
         <hr />
@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FOODID, "FOODID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.DropDownList("FOODID", null, htmlAttributes: new { @class = "form-control" })*@
+                @*@@Html.DropDownList("FOODID", null, htmlAttributes: new { @class = "form-control" })@*@
                 @Html.EditorFor(model => model.FOODID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FOODID, "", new { @class = "text-danger" })
             </div>
@@ -47,6 +47,13 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IMGPATH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" required />
             </div>
         </div>
 

@@ -27,7 +27,10 @@
 
     @using (Html.BeginForm("Authenticate", "Home", FormMethod.Post))
     {
+        <div class="admin">
+            @Html.ActionLink("AdminLogin", "AdminLogin", new { @class = "login", @id = "login" })
 
+        </div>
         @Html.AntiForgeryToken()
 
         <div class="container" id="login-container">
@@ -38,9 +41,13 @@
                             <form class="myForm text-center">
                                 <h1>Login</h1><br>
 
-                                @Html.ActionLink("AdminLogin", "AdminLogin")
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @*<a href="AdminLogin" id="adminlogin" class="adminlogin">AdminLogin</a>*@
 
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @*<div class="admin">
+                                    @Html.ActionLink("AdminLogin", "AdminLogin", new { @class = "login", @id = "login" })
+
+                                </div>*@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-1"><i class="fa-solid fa-envelope"></i></div>
