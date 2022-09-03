@@ -52,11 +52,12 @@ namespace FoodManagement.Controllers
                 data.NAME = admin.NAME;
                 data.PRICE = admin.PRICE;
                 data.QUANTITY = admin.QUANTITY;
+                
 
                 string fileName = admin.NAME;
                 string extension = Path.GetExtension(admin.ImageFile.FileName);
                 fileName = fileName + extension;
-                admin.IMGPATH = "~/Content/Product/" + fileName;
+                data.IMGPATH = "~/Content/Product/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
                 admin.ImageFile.SaveAs(fileName);
 

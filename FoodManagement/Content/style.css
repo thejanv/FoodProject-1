@@ -296,6 +296,16 @@ body {
     text-align: center;
 }
 
+.admin {
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration:none;
+}
+
+
 #login-container .col-md-9 {
     margin: auto;
     padding: auto;
