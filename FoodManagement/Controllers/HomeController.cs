@@ -33,7 +33,7 @@ namespace FoodManagement.Controllers
             admin.ImageFile.SaveAs(fileName);
             food.FOOD_TYPE.Add(admin);
             food.SaveChanges();
-            return View();
+            return RedirectToAction("Display");
         }
 
         [HttpGet]
