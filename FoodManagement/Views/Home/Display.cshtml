@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FoodManagement.Models.FOOD_TYPE>
+
+@{
+    ViewBag.Title = "Display";
+}
+
+<h2>Display</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AdminAdd")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QUANTITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FOOD_ITEM.NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRICE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QUANTITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FOOD_ITEM.NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "AdminUpdate", new { id=item.TYPEID }) |
+           
+            @Html.ActionLink("Delete", "AdminDelete", new { id=item.TYPEID })
+        </td>
+    </tr>
+}
+
+</table>

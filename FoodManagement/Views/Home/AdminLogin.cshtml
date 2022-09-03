@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "AdminLogin";
+}
+
+<h2>AdminLogin</h2>
+<html>
+<body>
+@using (Html.BeginForm("AdminAuthorize", "Home", FormMethod.Post))
+{
+    <div class="container" id="login-container">
+        <div class="myCard">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="myCtn">
+                        <form class="myForm text-center">
+                            <h1>Login</h1><br>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"><i class="fa-solid fa-envelope"></i></div>
+                                    <div class="col-11">
+                                        <input type="text" class="form-control" placeholder="Enter admin user id " id="user_id" name="user_id"/>
+                                        @*@Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @name = "email", @PlaceHolder = "Enter email" } })
+                                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"><i class="fa-solid fa-lock"></i></div>
+                                    <div class="col-11">
+                                        <input type="password" class="form-control" placeholder="Enter admin password" id="password" name="password" />
+                                        @*@Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control", @name = "password", @PlaceHolder = "Enter password", @Type = "password" } })
+                                        @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="login-error">
+                                @ViewBag.msg
+                            </p>
+                            <div class="form-group">
+                                @*<input type="button" class="buttn" value="CREATE ACCOUNT" id="login-button" />*@
+                                <input type="submit" value="Login" class="btn" id="login-button" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</body>
+</html>
+
