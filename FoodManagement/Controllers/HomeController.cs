@@ -1,10 +1,12 @@
 ﻿using FoodManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
-
+using static System.Net.WebRequestMethods;
 //C:\Users\Aashif Ameer\Source\Repos\FoodProject\FoodManagement\App_Data\
 namespace FoodManagement.Controllers
 {
@@ -13,6 +15,7 @@ namespace FoodManagement.Controllers
         // GET: Home
         FoodManagementEntities food = new FoodManagementEntities();
 
+        //=========================For Admin Page=============Start==========================
         [HttpGet]
         public ActionResult AdminAdd()
         {
@@ -22,6 +25,12 @@ namespace FoodManagement.Controllers
         [HttpPost]
         public ActionResult AdminAdd(FOOD_TYPE admin)
         {
+            string fileName = admin.NAME;
+            string extension = Path.GetExtension(admin.ImageFile.FileName);
+            fileName = fileName + extension;
+            admin.IMGPATH = "~/Content/Product/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
+            admin.ImageFile.SaveAs(fileName);
             food.FOOD_TYPE.Add(admin);
             food.SaveChanges();
             return View();
@@ -37,12 +46,20 @@ namespace FoodManagement.Controllers
         [HttpPost]
         public ActionResult AdminUpdate(FOOD_TYPE admin, int id)
         {
-            var data = food.FOOD_TYPE.FirstOrDefault(x=>x.FOODID==id);
+            var data = food.FOOD_TYPE.FirstOrDefault(x => x.TYPEID == id);
             if (data != null)
             {
                 data.NAME = admin.NAME;
                 data.PRICE = admin.PRICE;
                 data.QUANTITY = admin.QUANTITY;
+
+                string fileName = admin.NAME;
+                string extension = Path.GetExtension(admin.ImageFile.FileName);
+                fileName = fileName + extension;
+                admin.IMGPATH = "~/Content/Product/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
+                admin.ImageFile.SaveAs(fileName);
+
                 food.SaveChanges();
                 return RedirectToAction("Display");
             }
@@ -55,6 +72,14 @@ namespace FoodManagement.Controllers
         public ActionResult AdminDelete(int id)
         {
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
+            string fileName = data.NAME;
+            string extension = ".jpg";
+            fileName = fileName + extension;
+            data.IMGPATH = "~/Content/Product/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
+            FileInfo fi = new FileInfo(fileName);
+            if (fi.Exists)
+                fi.Delete();
             food.FOOD_TYPE.Remove(data);
             food.SaveChanges();
             return RedirectToAction("Display");
@@ -84,8 +109,8 @@ namespace FoodManagement.Controllers
                 return View("AdminLogin");
             }
 
-        }    
-
+        }
+        //=========================END============================================================
         public ActionResult Front()
         {
             return View();
@@ -116,7 +141,7 @@ namespace FoodManagement.Controllers
             }
         }
 
-        //[Authorize]
+        // [Authorize]
         public new ActionResult Content(string name)
         {
             if (name != null)
@@ -139,8 +164,6 @@ namespace FoodManagement.Controllers
             return View();
         }
         [ValidateAntiForgeryToken]
-       
-
         public ActionResult Authenticate()
         {
             if (ModelState.IsValid)
@@ -175,43 +198,5 @@ namespace FoodManagement.Controllers
                 return View("Login");
             }
         }
-        //----------------------------------------------------------------
-        public ActionResult Update(int id)
-        {
-            var data = food.USER_REGISTRATION.Find(id);
-            return View(data);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Update(USER_REGISTRATION user, string repwd,int id)
-        {
-            var data = food.USER_REGISTRATION.FirstOrDefault(x => x.USERID == id);
-            if (data.PASSWORD == user.PASSWORD && ModelState.IsValid && data != null && user.PASSWORD == repwd)
-            {
-                data.NAME = user.NAME;
-                data.MOBILE = user.MOBILE;
-                data.ADDRESS = user.ADDRESS;
-                data.EMAIL = user.EMAIL;
-                food.SaveChanges();
-                return RedirectToAction("Content");
-            }
-
-            else if (ModelState.IsValid && data != null && data.PASSWORD != user.PASSWORD)
-            {
-                data.PASSWORD = user.PASSWORD;
-                food.SaveChanges();
-                return RedirectToAction("Login");
-            }
-
-            else
-            {
-                ViewBag.msg = "Password and re-type passwords are not matched";
-                return View();
-            }
-
-        }
     }
 }
-    
-
