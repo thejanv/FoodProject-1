@@ -46,7 +46,7 @@ namespace FoodManagement.Controllers
         [HttpPost]
         public ActionResult AdminUpdate(FOOD_TYPE admin, int id)
         {
-            var data = food.FOOD_TYPE.FirstOrDefault(x => x.TYPEID == id);
+            var data = food.FOOD_TYPE.FirstOrDefault(x=>x.TYPEID==id);
             if (data != null)
             {
                 data.NAME = admin.NAME;
