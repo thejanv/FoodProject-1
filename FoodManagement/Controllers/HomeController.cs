@@ -11,6 +11,80 @@ namespace FoodManagement.Controllers
     {
         // GET: Home
         FoodManagementEntities food = new FoodManagementEntities();
+
+        [HttpGet]
+        public ActionResult AdminAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminAdd(FOOD_TYPE admin)
+        {
+            food.FOOD_TYPE.Add(admin);
+            food.SaveChanges();
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult AdminUpdate(int id)
+        {
+            var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
+            return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult AdminUpdate(FOOD_TYPE admin, int id)
+        {
+            var data = food.FOOD_TYPE.FirstOrDefault(x=>x.FOODID==id);
+            if (data != null)
+            {
+                data.NAME = admin.NAME;
+                data.PRICE = admin.PRICE;
+                data.QUANTITY = admin.QUANTITY;
+                food.SaveChanges();
+                return RedirectToAction("Display");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult AdminDelete(int id)
+        {
+            var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
+            food.FOOD_TYPE.Remove(data);
+            food.SaveChanges();
+            return RedirectToAction("Display");
+        }
+
+        public ActionResult Display()
+        {
+            return View(food.FOOD_TYPE.ToList());
+        }
+
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        public ActionResult AdminAuthorize()
+        {
+
+            if (Request.Form["user_id"].Equals("F00D123") && Request.Form["password"].Equals("F00DTrain@123"))
+            {
+
+                return RedirectToAction("Display");
+            }
+            else
+            {
+                ViewBag.msg = "Please provide correct User id and Password";
+                return View("AdminLogin");
+            }
+
+        }    
+
         public ActionResult Front()
         {
             return View();
