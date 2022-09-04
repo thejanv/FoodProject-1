@@ -1,9 +1,12 @@
 ﻿using FoodManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using static System.Net.WebRequestMethods;
 //C:\Users\Aashif Ameer\Source\Repos\FoodProject\FoodManagement\App_Data\
 namespace FoodManagement.Controllers
 {
@@ -21,6 +24,12 @@ namespace FoodManagement.Controllers
         [HttpPost]
         public ActionResult AdminAdd(FOOD_TYPE admin)
         {
+            string fileName = admin.NAME;
+            string extension = Path.GetExtension(admin.ImageFile.FileName);
+            fileName = fileName + extension;
+            admin.IMGPATH = "~/Content/Product/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
+            admin.ImageFile.SaveAs(fileName);
             food.FOOD_TYPE.Add(admin);
             food.SaveChanges();
             return View();
@@ -36,12 +45,20 @@ namespace FoodManagement.Controllers
         [HttpPost]
         public ActionResult AdminUpdate(FOOD_TYPE admin, int id)
         {
-            var data = food.FOOD_TYPE.FirstOrDefault(x=>x.FOODID==id);
+            var data = food.FOOD_TYPE.FirstOrDefault(x => x.TYPEID == id);
             if (data != null)
             {
                 data.NAME = admin.NAME;
                 data.PRICE = admin.PRICE;
                 data.QUANTITY = admin.QUANTITY;
+
+                string fileName = admin.NAME;
+                string extension = Path.GetExtension(admin.ImageFile.FileName);
+                fileName = fileName + extension;
+                admin.IMGPATH = "~/Content/Product/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
+                admin.ImageFile.SaveAs(fileName);
+
                 food.SaveChanges();
                 return RedirectToAction("Display");
             }
@@ -54,6 +71,14 @@ namespace FoodManagement.Controllers
         public ActionResult AdminDelete(int id)
         {
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
+            string fileName = data.NAME;
+            string extension = ".jpg";
+            fileName = fileName + extension;
+            data.IMGPATH = "~/Content/Product/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
+            FileInfo fi = new FileInfo(fileName);
+            if (fi.Exists)
+                fi.Delete();
             food.FOOD_TYPE.Remove(data);
             food.SaveChanges();
             return RedirectToAction("Display");
@@ -83,7 +108,7 @@ namespace FoodManagement.Controllers
                 return View("AdminLogin");
             }
 
-        }    
+        }
 
         public ActionResult Front()
         {
@@ -91,7 +116,7 @@ namespace FoodManagement.Controllers
         }
         public ActionResult Index()
         {
-            
+
             return View();
         }
         [HttpPost]
@@ -104,7 +129,7 @@ namespace FoodManagement.Controllers
                 food.SaveChanges();
                 return RedirectToAction("Login");
             }
-            else if(user.PASSWORD != repassword)
+            else if (user.PASSWORD != repassword)
             {
                 ViewBag.msg = "Password and re-type password are not matched";
                 return View(user);
