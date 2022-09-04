@@ -36,7 +36,7 @@
 
 
 
-.signin-btn, .login-btn {
+.signin-btn, .login-btn{
     width: 100px;
     padding: 8px 0;
     outline: none;
@@ -296,14 +296,7 @@ body {
     text-align: center;
 }
 
-.admin {
-    color: #000;
-    font-size: 24px;
-    font-weight: 700;
-    text-transform: capitalize;
-    text-align: center;
-    text-decoration:none;
-}
+
 
 
 #login-container .col-md-9 {
