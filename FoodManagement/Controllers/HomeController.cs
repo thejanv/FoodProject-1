@@ -15,6 +15,7 @@ namespace FoodManagement.Controllers
         // GET: Home
         FoodManagementEntities food = new FoodManagementEntities();
 
+        //=========================For Admin Page=============Start==========================
         [HttpGet]
         public ActionResult AdminAdd()
         {
@@ -32,7 +33,7 @@ namespace FoodManagement.Controllers
             admin.ImageFile.SaveAs(fileName);
             food.FOOD_TYPE.Add(admin);
             food.SaveChanges();
-            return View();
+            return RedirectToAction("Display");
         }
 
         [HttpGet]
@@ -45,17 +46,18 @@ namespace FoodManagement.Controllers
         [HttpPost]
         public ActionResult AdminUpdate(FOOD_TYPE admin, int id)
         {
-            var data = food.FOOD_TYPE.FirstOrDefault(x => x.TYPEID == id);
+            var data = food.FOOD_TYPE.FirstOrDefault(x=>x.TYPEID==id);
             if (data != null)
             {
                 data.NAME = admin.NAME;
                 data.PRICE = admin.PRICE;
                 data.QUANTITY = admin.QUANTITY;
+                
 
                 string fileName = admin.NAME;
                 string extension = Path.GetExtension(admin.ImageFile.FileName);
                 fileName = fileName + extension;
-                admin.IMGPATH = "~/Content/Product/" + fileName;
+                data.IMGPATH = "~/Content/Product/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
                 admin.ImageFile.SaveAs(fileName);
 
@@ -109,7 +111,7 @@ namespace FoodManagement.Controllers
             }
 
         }
-
+        //=========================END============================================================
         public ActionResult Front()
         {
             return View();
@@ -141,7 +143,7 @@ namespace FoodManagement.Controllers
         }
 
         // [Authorize]
-        public ActionResult Content(string name)
+        public new ActionResult Content(string name)
         {
             if (name != null)
             {
