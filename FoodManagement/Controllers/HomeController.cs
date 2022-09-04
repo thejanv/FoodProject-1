@@ -73,12 +73,8 @@ namespace FoodManagement.Controllers
         public ActionResult AdminDelete(int id)
         {
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
-            string fileName = data.NAME;
-            string extension = ".jpg";
-            fileName = fileName + extension;
-            data.IMGPATH = "~/Content/Product/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
-            FileInfo fi = new FileInfo(fileName);
+            var t = Path.Combine(Server.MapPath(data.IMGPATH));
+            FileInfo fi = new FileInfo(t);
             if (fi.Exists)
                 fi.Delete();
             food.FOOD_TYPE.Remove(data);
