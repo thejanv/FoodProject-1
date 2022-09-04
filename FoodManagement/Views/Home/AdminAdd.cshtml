@@ -3,70 +3,141 @@
 @{
     ViewBag.Title = "AdminAdd";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2>AdminAdd</h2>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <!--jquery-->
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
+    <!--External CSS File-->
+    <link rel="stylesheet" href="/Content/style.css">
+
+    <!--Font awesome code-->
+    <script src="https://kit.fontawesome.com/2243ae231d.js" crossorigin="anonymous"></script>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @*<script>
+            function check() {
+                var password = document.getElementById("password").value;
+                var repassword = document.getElementById("repassword").value;
+
+                if (!password.match(repassword)) {
+                    document.getElementById("checkPassword").style.color = "red";
+                    document.getElementById("checkPassword").innerHTML = "Password and re-type password are not matched";
+                }
+
+            }
+        </script>*@
+    <style>
+    </style>
+
+    <title>Food Train</title>
+</head>
+<body background="/Content/Images/Food.png" class="#login-body">
 
 
-@using (Html.BeginForm("AdminAdd", "Home", FormMethod.Post, new {enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>FOOD_TYPE</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.FOODID, "FOODID", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @*@Html.DropDownList("FOODID", null, htmlAttributes: new { @class = "form-control" })*@
-            @Html.EditorFor(model => model.FOODID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FOODID, "", new { @class = "text-danger" })
+
+    @using (Html.BeginForm("AdminAdd", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container" id="signup-container">
+            <div class="myCard">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="myCtn">
+                            <form class="myForm text-center">
+                                <header>Add New Items</header><br>
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-1"><i class="fa-solid fa-user"></i></div>
+                                        <div class="col-11">
+                                            @*<input type="text" class="form-control" placeholder="Enter name"/>*@
+                                            @Html.EditorFor(model => model.FOODID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Food ID" } })
+                                            @Html.ValidationMessageFor(model => model.FOODID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-1"><i class="fa-solid fa-envelope"></i></div>
+                                        <div class="col-11">
+                                            @*<input type="email" class="form-control" placeholder="Enter email"/>*@
+                                            @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Name" } })
+                                            @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-1"><i class="fa-solid fa-square-phone"></i></div>
+                                        <div class="col-11">
+                                            @*<input type="text" class="form-control" placeholder="Enter mobile number"/>*@
+                                            @Html.EditorFor(model => model.PRICE, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter The Price" } })
+                                            @Html.ValidationMessageFor(model => model.PRICE, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-1"><i class="fa-solid fa-lock"></i></div>
+                                        <div class="col-11">
+                                            @*<input type="password" class="form-control" placeholder="Enter password"/>*@
+                                            @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { @class = "form-control", @id = "password", @placeholder = "Enter The Quantity" } })
+                                            @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-1"><i class="fa-solid fa-location-dot"></i></div>
+                                        <div class="col-11">
+                                            <input type="file" name="ImageFile" required />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="form-group">
+                                    @*<input type="button" class="buttn" value="CREATE ACCOUNT" id="signup-button" />*@
+                                    <input type="submit" value="CREATE ACCOUNT" class="buttn" onclick="check()" id="signup-button" />
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.NAME, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+        <div>
+            @Html.ActionLink("Display Items", "Display")
         </div>
-    </div>
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PRICE, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PRICE, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PRICE, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.QUANTITY, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.IMGPATH, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="file" name="ImageFile" required/>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Display")
-</div>
-
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
