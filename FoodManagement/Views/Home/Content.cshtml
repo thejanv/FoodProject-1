@@ -181,101 +181,37 @@
     }
 
 
-   
+ 
     <section class="koththu" id="koththu">
         <div class="container-fluid">
             <div class="container">
                 <h1>Koththu</h1>
                 <div class="owl-carousel owl-theme">
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="~/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Chicken Koththu</h4>
-                                    <p class="card-text text-center">600</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
+                    @foreach (var item in Koththu)
+                    {
+                        <div class="content-area">
+                            <div class="content p-5">
+                                <div class="card text-center">
+                                    <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                        <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
+                                        <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
+                                        <p class="qty-cart text-center" id="qty-cart">5</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Egg Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Cheese Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Dolphin Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Beef Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Prawns Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
+                   
 
                 </div>
             </div>
         </div>
     </section>
-    
+   
+
     <!--Koththu section ends-->
     <!--Bakery section starts-->
     <section class="bakery" id="bakery">
@@ -283,89 +219,23 @@
             <div class="container">
                 <h1>Bakery Items</h1>
                 <div class="owl-carousel owl-theme">
+                    @foreach (var item in bakery)
+                    {
                     <div class="content-area">
                         <div class="content p-5">
                             <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
+                                <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                 <div class="card-body">
-                                    <h4 class="card-title text-center">Chicken Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
+                                    <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                    <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
                                     <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                     <p class="qty-cart text-center" id="qty-cart">5</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Egg Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Cheese Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Dolphin Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Beef Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Prawns Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
+                   
 
                 </div>
             </div>
@@ -378,89 +248,24 @@
             <div class="container">
                 <h1>PIZZA</h1>
                 <div class="owl-carousel owl-theme">
+                    @foreach (var item in pizza)
+                     {
                     <div class="content-area">
                         <div class="content p-5">
                             <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
+                                <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                 <div class="card-body">
-                                    <h4 class="card-title text-center">Chicken Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
+                                    <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                    <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
                                     <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                     <p class="qty-cart text-center" id="qty-cart">5</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                     }
 
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Egg Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Cheese Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Dolphin Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Beef Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Prawns Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
 
                 </div>
             </div>
@@ -473,89 +278,25 @@
             <div class="container">
                 <h1>RICE</h1>
                 <div class="owl-carousel owl-theme">
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Chicken Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
+                    @foreach (var item in rice)
+                    {
                     <div class="content-area">
                         <div class="content p-5">
                             <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
+                                <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                 <div class="card-body">
-                                    <h4 class="card-title text-center">Egg Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
+                                    <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                    <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
                                     <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                     <p class="qty-cart text-center" id="qty-cart">5</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    }
 
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Cheese Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Dolphin Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Beef Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Prawns Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>
@@ -568,90 +309,25 @@
             <div class="container">
                 <h1>DESERT</h1>
                 <div class="owl-carousel owl-theme">
+
+                    @foreach (var item in desert)
+                    {
                     <div class="content-area">
                         <div class="content p-5">
                             <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
+                                <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                 <div class="card-body">
-                                    <h4 class="card-title text-center">Chicken Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
+                                    <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                    <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
                                     <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                     <p class="qty-cart text-center" id="qty-cart">5</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    }
 
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Egg Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Cheese Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Dolphin Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Beef Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="/Content/Images/burger.jpg" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">Prawns Koththu</h4>
-                                    <p class="card-text text-center">Rs.500.00</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                  
                 </div>
             </div>
         </div>

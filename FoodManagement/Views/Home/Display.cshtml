@@ -4,12 +4,12 @@
     ViewBag.Title = "Display";
 }
 
-<h2>Display</h2>
+<h2 al>Display</h2>
 
 <p>
     @Html.ActionLink("Create New", "AdminAdd")
 </p>
-<table class="table">
+<table class="table" cellpadding="10" border="1" align="center" >
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NAME)
@@ -23,7 +23,10 @@
         <th>
             @Html.DisplayNameFor(model => model.FOOD_ITEM.NAME)
         </th>
-        <th></th>
+        <th>
+            IMAGE PATH
+        </th>
+        <th>OPTIONS</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -39,6 +42,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FOOD_ITEM.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMGPATH)
         </td>
         <td>
             @Html.ActionLink("Edit", "AdminUpdate", new { id=item.TYPEID }) |
