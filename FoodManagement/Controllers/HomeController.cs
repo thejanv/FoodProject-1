@@ -70,15 +70,23 @@ namespace FoodManagement.Controllers
             }
         }
 
-        public ActionResult AdminDelete(int id)
+        public ActionResult AdminDelete(int? id)
         {
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
-            string fileName = data.NAME;
-            string extension = ".jpg";
-            fileName = fileName + extension;
-            data.IMGPATH = "~/Content/Product/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
-            FileInfo fi = new FileInfo(fileName);
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+            return View(data);
+        }
+
+        [HttpPost, ActionName("AdminDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
+            var t = Path.Combine(Server.MapPath(data.IMGPATH));
+            FileInfo fi = new FileInfo(t);
             if (fi.Exists)
                 fi.Delete();
             food.FOOD_TYPE.Remove(data);
