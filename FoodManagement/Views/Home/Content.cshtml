@@ -178,14 +178,24 @@
        var pizza = from pi in Model where pi.FOODID == 102 select pi;
        var rice = from ri in Model where ri.FOODID == 103 select ri;
        var desert = from des in Model where des.FOODID == 104 select des;
-    }
+
+
+}
 
 
  
     <section class="koththu" id="koththu">
         <div class="container-fluid">
             <div class="container">
-                <h1>Koththu</h1>
+                <h1>@if (Koththu.Count() > 0)
+                {
+                    @Html.Label("Koththu");
+                }
+                else
+                {
+                    @Html.Label("");
+                }
+                </h1>
                 <div class="owl-carousel owl-theme">
                     @foreach (var item in Koththu)
                     {
@@ -217,7 +227,16 @@
     <section class="bakery" id="bakery">
         <div class="container-fluid">
             <div class="container">
-                <h1>Bakery Items</h1>
+                <h1>
+                    @if (bakery.Count() > 0)
+                    {
+                        @Html.Label("Backery Items");
+                    }
+                    else
+                    {
+                        @Html.Label("");
+                    }
+                            </h1>
                 <div class="owl-carousel owl-theme">
                     @foreach (var item in bakery)
                     {
@@ -246,7 +265,16 @@
     <section class="pizza" id="pizza">
         <div class="container-fluid">
             <div class="container">
-                <h1>PIZZA</h1>
+                <h1>
+                    @if (pizza.Count() > 0)
+                    {
+                        @Html.Label("Pizza");
+                    }
+                    else
+                    {
+                        @Html.Label("");
+                    }
+                            </h1>
                 <div class="owl-carousel owl-theme">
                     @foreach (var item in pizza)
                      {
@@ -276,7 +304,16 @@
     <section class="rice" id="rice">
         <div class="container-fluid">
             <div class="container">
-                <h1>RICE</h1>
+                <h1>
+                    @if (rice.Count() > 0)
+                    {
+                        @Html.Label("Rice");
+                    }
+                    else
+                    {
+                        @Html.Label("");
+                    }
+                            </h1>
                 <div class="owl-carousel owl-theme">
 
                     @foreach (var item in rice)
@@ -307,7 +344,16 @@
     <section class="desert" id="desert">
         <div class="container-fluid">
             <div class="container">
-                <h1>DESERT</h1>
+                <h1>
+                    @if (desert.Count() > 0)
+                    {
+                        @Html.Label("Deserts");
+                    }
+                    else
+                    {
+                        @Html.Label("");
+                    }
+                            </h1>
                 <div class="owl-carousel owl-theme">
 
                     @foreach (var item in desert)
