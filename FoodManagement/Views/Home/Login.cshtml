@@ -27,10 +27,7 @@
 
     @using (Html.BeginForm("Authenticate", "Home", FormMethod.Post))
     {
-        <div class="admin">
-            @Html.ActionLink("AdminLogin", "AdminLogin", new { @class = "login", @id = "login" })
-
-        </div>
+        
         @Html.AntiForgeryToken()
 
         <div class="container" id="login-container">
@@ -39,15 +36,15 @@
                     <div class="col-md-9">
                         <div class="myCtn">
                             <form class="myForm text-center">
-                                <h1>Login</h1><br>
+                                <h1>User Login</h1><br>
 
                                 @*<a href="AdminLogin" id="adminlogin" class="adminlogin">AdminLogin</a>*@
 
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 @*<div class="admin">
-                                    @Html.ActionLink("AdminLogin", "AdminLogin", new { @class = "login", @id = "login" })
+            @Html.ActionLink("AdminLogin", "AdminLogin", new { @class = "login", @id = "login" })
 
-                                </div>*@
+        </div>*@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-1"><i class="fa-solid fa-envelope"></i></div>
@@ -74,10 +71,25 @@
                                 <p id="login-error">
                                     @ViewBag.msg
                                 </p>
+
                                 <div class="form-group">
                                     @*@<input type="button" class="buttn" value="CREATE ACCOUNT" id="login-button" />@*@
                                     <input type="submit" value="Login" class="btn" id="login-button" />
                                 </div>
+
+                                <div class="form-group" id="login">
+                                    <p>Create new user account <a href="Index">Create Here</a></p>
+                                </div>
+
+                                <h1>Admin Login</h1>
+
+                                <div class="form-group" id="login">
+                                    <button type="submit" class="buttn" id="login-button">
+                                        
+                                        <a href="AdminLogin" class="nav-link">Admin Login</a>
+                                    </button>
+                                </div>
+
                             </form>
                         </div>
                     </div>

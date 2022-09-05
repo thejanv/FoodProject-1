@@ -114,7 +114,7 @@ namespace FoodManagement.Controllers
             }
             else
             {
-                ViewBag.msg = "Please provide correct User id and Password";
+                ViewBag.msg = "Please provide correct Admin id and Password";
                 return View("AdminLogin");
             }
 
