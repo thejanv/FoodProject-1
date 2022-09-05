@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "AdminAdd")
 </p>
-<table class="table" cellpadding="10" border="1" align="center" >
+<table class="table" cellpadding="10" border="1" align="center">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NAME)
@@ -29,29 +29,31 @@
         <th>OPTIONS</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PRICE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QUANTITY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FOOD_ITEM.NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IMGPATH)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "AdminUpdate", new { id=item.TYPEID }) |
-           
-            @Html.ActionLink("Delete", "AdminDelete", new { id=item.TYPEID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRICE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QUANTITY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FOOD_ITEM.NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMGPATH)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "AdminUpdate", new { id = item.TYPEID }) |
+
+                @Html.ActionLink("Delete", "AdminDelete", new { id = item.TYPEID })
+            </td>
+        </tr>
+    }
 
 </table>
+

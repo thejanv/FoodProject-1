@@ -42,7 +42,7 @@
 
     <title>Food Train</title>
 </head>
-<body background="/Content/Images/food.png" class="#index-body">
+<body background="/Content/Images/food.png" class="index-body">
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -52,12 +52,12 @@
                 <div class="col-md-8">
                     <div class="myCtn">
                         <form class="myForm text-center">
-                            <header>Create new account</header><br>
+                            <header style="text-align: center">Create new account</header><br>
 
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                             <div class="form-group">
-                                <div class="row">
+                                <div class="row ">
                                     <div class="col-1"><i class="fa-solid fa-user"></i></div>
                                     <div class="col-11">
                                         @*<input type="text" class="form-control" placeholder="Enter name"/>*@
@@ -129,6 +129,10 @@
                             <div class="form-group">
                                 @*<input type="button" class="buttn" value="CREATE ACCOUNT" id="signup-button" />*@
                                 <input type="submit" value="CREATE ACCOUNT" class="buttn" onclick="check()" id="signup-button" />
+                            </div>
+
+                            <div class="form-group" id="login">
+                                <p>Already have an account? <a href="Login">Login Here</a></p>
                             </div>
 
                         </form>

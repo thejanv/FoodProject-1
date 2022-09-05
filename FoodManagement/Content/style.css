@@ -36,7 +36,7 @@
 
 
 
-.signin-btn, .login-btn{
+.signin-btn, .login-btn {
     width: 100px;
     padding: 8px 0;
     outline: none;
@@ -46,11 +46,9 @@
     color: #fff;
     font-weight: 700;
     cursor: pointer;
-    
 }
 
     .home-btn:hover, .signin-btn:hover, .login-btn:hover {
-        
         background: var(--gradient);
         border: 2px solid var(--gradient);
         box-shadow: 0.5 1rem rgba(0,0,0,.1);
@@ -84,11 +82,11 @@
     transition: all .3s linear;
 }
 
-.about-btn:hover {
-    border: 2px solid #fff;
-    background: transparent;
-    transform: scale(1.1);
-}
+    .about-btn:hover {
+        border: 2px solid #fff;
+        background: transparent;
+        transform: scale(1.1);
+    }
 
 /*about us*/
 
@@ -167,53 +165,53 @@ body {
 #signup-container {
     position: absolute;
     max-width: 800px;
-    height: 500px;
+    max-height: 400px;
     margin: auto;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 
-#signup-container .row {
-    height: 100%;
-}
+    #signup-container .row {
+        height: 100%;
+    }
 
-#signup-container .myCtn {
-    position: relative;
-    background: #fff;
-    border-radius: 25px;
-    height: 100%;
-    padding: 25px;
-    padding-left: 50px;
-    border-radius: 25px;
-    -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-    -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-    box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-}
+    #signup-container .myCtn {
+        position: relative;
+        background: #fff;
+        border-radius: 25px;
+        height: 100%;
+        padding: 25px;
+        padding-left: 50px;
+        border-radius: 25px;
+        -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    }
 
-#signup-container .myCtn header {
-    color: #000;
-    font-size: 24px;
-    font-weight: 700;
-    text-transform: capitalize;
-}
+        #signup-container .myCtn header {
+            color: #000;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
 
-#signup-container .col-md-8 {
-    margin: auto;
-}
+    #signup-container .col-md-8 {
+        margin: auto;
+    }
 
 
-#signup-container i {
-    margin-top: 10px;
-    color: #e52d27;
-}
+    #signup-container i {
+        margin-top: 10px;
+        color: #e52d27;
+    }
 
-#signup-container .form-group {
-    padding-bottom: 10px;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-}        
+    #signup-container .form-group {
+        padding-bottom: 10px;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+    }
 
 #signup-button {
     width: 200px;
@@ -234,12 +232,13 @@ body {
     -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
     -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
     box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
 }
 
-#signup-button:hover {
-    background: var(--gradient);
-    border: 2px solid var(--gradient);
-}    
+    #signup-button:hover {
+        background: var(--gradient);
+        border: 2px solid var(--gradient);
+    }
 
 #checkPassword {
     color: #e52d27;
@@ -265,56 +264,56 @@ body {
     max-width: 800px;
     height: 500px;
     margin: auto;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%,-50%);
     padding-top: 8%;
 }
 
-#login-container .row {
-    height: 100%;
-}
+    #login-container .row {
+        height: 100%;
+    }
 
-#login-container .myCtn {
-    position: relative;
-    background: #fff;
-    border-radius: 25px;
-    height: 100%;
-    padding: 20px;
-    padding-left: 50px;
-    border-radius: 25px;
-    -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-    -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-    box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-}
+    #login-container .myCtn {
+        position: relative;
+        background: #fff;
+        border-radius: 25px;
+        height: 100%;
+        padding: 20px;
+        padding-left: 50px;
+        border-radius: 25px;
+        -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    }
 
-#login-container .myCtn h1 {
-    color: #000;
-    font-size: 24px;
-    font-weight: 700;
-    text-transform: capitalize;
-    text-align: center;
-}
-
-
+        #login-container .myCtn h1 {
+            color: #000;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: capitalize;
+            text-align: center;
+        }
 
 
-#login-container .col-md-9 {
-    margin: auto;
-    padding: auto;
-}
 
-#login-container i {
-    margin-top: 10px;
-    color: #e52d27;
-}
 
-#login-container .form-group {
-    padding-bottom: 20px;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-}    
+    #login-container .col-md-9 {
+        margin: auto;
+        padding: auto;
+    }
+
+    #login-container i {
+        margin-top: 10px;
+        color: #e52d27;
+    }
+
+    #login-container .form-group {
+        padding-bottom: 20px;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+    }
 
 #login-button {
     width: 200px;
@@ -341,8 +340,14 @@ body {
         background: var(--gradient);
         border: 2px solid var(--gradient);
     }
-#login-error{
-    font-size:14px;
-    color:red;
-    text-align:center;
+
+#login-error {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}
+
+#login #nav-link a {
+    text-decoration: none;
+    color: #fff;
 }
