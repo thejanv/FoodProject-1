@@ -174,7 +174,7 @@ namespace FoodManagement.Controllers
             return View();
         }
         [ValidateAntiForgeryToken]
-        public ActionResult Authenticate()
+        public ActionResult Authenticate(USER_REGISTRATION user)
         {
             if (ModelState.IsValid)
             {
@@ -193,7 +193,7 @@ namespace FoodManagement.Controllers
                 }
                 if (count > 0)
                 {
-                    return RedirectToAction("Content");
+                    return RedirectToAction("Content",user);
                 }
                 else
                 {
@@ -208,5 +208,33 @@ namespace FoodManagement.Controllers
                 return View("Login");
             }
         }
+        //===========Add to Cart and Check out=============================================================
+       /* public ActionResult AddToCart()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddToCart(int id,int quantity)
+        {
+            var data = food.FOOD_TYPE.Find(id);
+            int addId = data.TYPEID;
+            
+            string name = data.NAME;
+            int totalPrice = data.PRICE * quantity;
+
+            if (data != null)
+            {
+                food.ADDTOCARTs.Add(new ADDTOCART (addId,name,quantity,totalPrice));
+                food.SaveChanges();
+                return RedirectToAction("AddToCart");
+            }
+            else
+            {
+                return View();
+            }
+
+           
+            
+        }*/
     }
 }
