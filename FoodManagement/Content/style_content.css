@@ -1,0 +1,440 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/capture-it');
+@import url(//db.onlinewebfonts.com/c/c26179a6c23d2237e25a2b846421298f?family=Bafora+Demo);
+
+:root {
+    --lightRed: #e52d27;
+    --darkRed: #b31217;
+    --gradient: linear-gradient(90deg, var(--lightRed), var(--darkRed));
+}
+
+*::selection {
+    background: var(--lightRed);
+    color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*=============================== Header =================================== */
+/*.navbar{
+    box-shadow: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+}*/
+
+/*#header-content {
+    height: 100vh;
+}*/
+
+#header-content h1 {
+    font-weight: 500;
+    font-size: 100px;
+    font-family: 'Capture it', sans-serif;
+    align-content: center;
+    padding-top: 30%;
+    color: #000;
+}
+
+#header-content p {
+}
+
+#logo-header {
+}
+
+.navbar {
+    background-color: #000;
+    color: #fff;
+    margin-bottom: px;
+}
+
+#header-navbar .nav-item a {
+    font-weight: 500;
+    color: #fff;
+}
+
+    #header-navbar .nav-item a:hover {
+        color: #e52d27;
+    }
+
+.dropdown .nav-link:hover {
+    color: #e52d27;
+}
+
+#header-navbar .nav-item #dropButton {
+    color: #000;
+    text-decoration: none;
+}
+
+#searchBox {
+    margin-top: 5px;
+}
+
+#searchBtn {
+    margin: 5px;
+}
+
+#mainNavBar1 {
+    color: red;
+}
+
+.offcanvas {
+    background-color: #000;
+}
+
+#toggleBtn-header {
+    background-color: #fff;
+}
+
+#offCanvas-header {
+    background-color: #fff;
+}
+
+
+/*=============================== Landing =================================== */
+
+/*#Landing {
+    height: 89.2vh;
+}
+
+    #Landing h1 {
+        font-weight: 500;
+        font-size: 5.8rem;
+        font-family: 'Capture it', sans-serif;
+        align-content: center;
+        padding-top: 30%;
+        color: #fff;
+    }
+
+    #Landing p {
+        font-family: 'Cookie', cursive;
+    }*/
+
+
+/*=============================== koththu =================================== */
+
+
+
+/*.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #000;
+}*/
+
+
+.bakery {
+    height: 100vh;
+}
+
+.bakery h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+}
+
+.bakery .card {
+    background-color: #fff;
+    -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+}
+
+.card .card-body .card-title {
+    text-transform: capitalize;
+    color: #000;
+}
+
+.card .card-body .card-text {
+    font-weight: 600;
+    color: #e52d27;
+}
+
+.card .card-body .button {
+    width: 150px;
+    padding: 5px 0;
+    outline: none;
+    border: none;
+    border-radius: 60px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    align-content: center;
+}
+
+    .card .card-body .button:hover {
+        background: #e52d27;
+    }
+
+.card .card-body .qty-cart {
+    margin-top: 5px;
+}
+
+
+/*=============================== bakery =================================== */
+
+
+.bakery {
+    height: 100vh;
+}
+
+    .bakery h1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .bakery .card {
+        background-color: #fff;
+        -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    }
+
+/*=============================== pizza =================================== */
+
+
+.pizza {
+    height: 100vh;
+}
+
+    .pizza h1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .pizza .card {
+        background-color: #fff;
+        -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    }
+
+/*=============================== rice =================================== */
+
+
+.rice {
+    height: 100vh;
+}
+
+    .rice h1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .rice .card {
+        background-color: #fff;
+        -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    }
+
+/*=============================== desert =================================== */
+
+
+.desert {
+    height: 100vh;
+}
+
+    .desert h1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .desert .card {
+        background-color: #fff;
+        -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    }
+
+
+
+/*=============================== Footer =================================== */
+
+.footer {
+    padding: 30px 20px;
+    background-image: linear-gradient(#e52d27,#b31217);
+    color: #fff;
+}
+
+    .footer h4 {
+        text-transform: capitalize;
+        text-align: left;
+        margin-bottom: 28px;
+        text-align: center;
+        text-decoration: underline;
+        text-underline-offset: 1rem;
+        font-weight: 600;
+    }
+
+    .footer p {
+        font-size: 14px;
+        text-align: left;
+        padding-right: 35px;
+        text-align: center;
+        align-items: center;
+        font-weight: 500;
+    }
+
+    .footer i {
+        padding-right: 10px;
+    }
+
+    .footer a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .footer a:hover {
+            color: #000;
+        }
+
+    .footer hr {
+        margin-top: 10px;
+        background: #fff;
+    }
+
+    .footer .copyright {
+        text-align: center;
+    }
+
+
+/*=============================== Display =================================== */
+
+#display-food h1 {
+    text-align: center;
+    margin-top: 30px;
+    margin: 20px;
+    padding-top: 20px;
+    font-weight: 700;
+}
+
+
+
+#display-food thead {
+    background-color: #000;
+    color: #fff;
+}
+
+
+#display-food .btn a{
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+#display-food #btn-edit a{
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#btn-edit .btn:hover {
+    background-color: #e52d27;
+    color: #ffffff;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+
+#btn-edit .btn {
+    background-color: #000000;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+#display-food .card-img-top {
+    width: 40px;
+}
+
+
+/*=============================== AdminAdd =================================== */
+
+.admin {
+    height: 90vh;
+}
+
+.admin .row-no-gutters {
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px grey;
+}    
+
+.admin img {
+    border-radius: 30px;
+    margin-right: 150px;
+}
+
+.admin h1 {
+    text-transform: capitalize;
+    font-weight: 700;
+    text-align: center;
+}
+
+.admin .btn-admin {
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.admin .btn-admin:hover {
+    background: #fff;
+    border: 2px solid;
+    color: #000
+}
+
+
+
+/*=============================== AdminUpdate =================================== */
+
+.update {
+    height: 90vh;
+}
+
+.update .row-no-gutters {
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px grey;
+}
+
+.update img {
+    border-radius: 30px;
+    margin-right: 150px;
+}
+
+.update h1 {
+    text-transform: capitalize;
+    font-weight: 700;
+    text-align: center;
+}
+
+.update .btn-update {
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.update .btn-update:hover {
+    background: #fff;
+    border: 2px solid;
+    color: #000
+}
+
+
