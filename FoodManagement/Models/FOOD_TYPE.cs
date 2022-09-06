@@ -18,7 +18,7 @@ namespace FoodManagement.Models
         public string NAME { get; set; }
         public int PRICE { get; set; }
         public int QUANTITY { get; set; }
-        [DisplayName("Upload FIle")]
+        [DisplayName("Upload File")]
         public string IMGPATH { get; set; }
 
         public HttpPostedFileBase ImageFile { get; set; }

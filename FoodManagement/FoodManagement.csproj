@@ -97,9 +97,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\admin-edit.jpg" />
+    <Content Include="Content\Images\admin-login.jpg" />
     <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\burger.jpg" />
     <Content Include="Content\Images\chicken-koththu.jpg" />
+    <Content Include="Content\Images\display-bg.png" />
     <Content Include="Content\Images\Egg koththu.jpg" />
     <Content Include="Content\Images\food.png" />
     <Content Include="Content\Images\Fried_rice.jpg" />
@@ -120,8 +123,40 @@
     <Content Include="Content\Images\restaurant.jpg" />
     <Content Include="Content\Images\spaghetti-g1b35e9a65_1920.jpg" />
     <Content Include="Content\Images\vegetables-g2ab59e7f8_1920.jpg" />
+    <Content Include="Content\Product\beef kottu.jpg" />
+    <Content Include="Content\Product\beef pizza.jpg" />
+    <Content Include="Content\Product\biriyani.jpg" />
+    <Content Include="Content\Product\BREAD.jpg" />
+    <Content Include="Content\Product\BURGER.jpg" />
+    <Content Include="Content\Product\CAKE.jpg" />
+    <Content Include="Content\Product\CHEESE KOTHTHU.jpg" />
+    <Content Include="Content\Product\CHEESE PIZZA.jpg" />
+    <Content Include="Content\Product\chicken kottu.jpg" />
+    <Content Include="Content\Product\CHICKEN PIZZA.jpg" />
+    <Content Include="Content\Product\CHOCOLATE ICE-CREAM.jpg" />
+    <Content Include="Content\Product\CRISPY PIZZA.jpg" />
+    <Content Include="Content\Product\DHONUTS.jpg" />
+    <Content Include="Content\Product\dolphin kottu.jpg" />
+    <Content Include="Content\Product\EGG KOTHTHU.jpg" />
+    <Content Include="Content\Product\fish bun.jpg" />
+    <Content Include="Content\Product\fish pizza.jpg" />
+    <Content Include="Content\Product\fried rice.jpg" />
+    <Content Include="Content\Product\HYDERABAD BIRIYANI.jpg" />
+    <Content Include="Content\Product\jelly.jpg" />
+    <Content Include="Content\Product\milkrice.jpg" />
+    <Content Include="Content\Product\prawns kottu.jpg" />
+    <Content Include="Content\Product\PUDDING.jpg" />
+    <Content Include="Content\Product\sausage bun.jpg" />
+    <Content Include="Content\Product\SUBMARINE.jpg" />
+    <Content Include="Content\Product\vanila ice-cream.jpg" />
+    <Content Include="Content\Product\vegetable bun.jpg" />
+    <Content Include="Content\Product\vegetable kottu.jpg" />
+    <Content Include="Content\Product\vegetable pizza.jpg" />
+    <Content Include="Content\Product\watalappan.jpg" />
+    <Content Include="Content\Product\yellow rice.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\style_content.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -200,7 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
