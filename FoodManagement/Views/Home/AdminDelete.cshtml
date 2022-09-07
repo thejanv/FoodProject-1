@@ -1,62 +1,100 @@
 ﻿@model FoodManagement.Models.FOOD_TYPE
 
-@{ ViewBag.Title = "AdminDelete"; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2>AdminDelete</h2>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>FOOD_TYPE</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NAME)
-        </dt>
+    <!--jquery-->
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
-        <dd>
-            @Html.DisplayFor(model => model.NAME)
-        </dd>
+    <!--External CSS File-->
+    <link rel="stylesheet" href="~/Content/style_content.css">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PRICE)
-        </dt>
+    <!--Font awesome code-->
+    <script src="https://kit.fontawesome.com/2243ae231d.js" crossorigin="anonymous"></script>
 
-        <dd>
-            @Html.DisplayFor(model => model.PRICE)
-        </dd>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.QUANTITY)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.QUANTITY)
-        </dd>
+</head>
+<body class="delete" style="background: rgb(226, 219, 219);">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IMGPATH)
-        </dt>
+    <section class="form my-4 mx-5">
+        <div class="container">
+            <div class="row-no-gutters">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="~/Content/Images/admin-delete.jpg" alt="Admin login image" class="img-fluid">
+                    </div>
+                    <div class="col-md-7 px-5 pt-4">
+                        <h3>Are you sure you want to delete this?</h3>
 
-        <dd>
-            <img class="card-img-top" src="@Url.Content(Model.IMGPATH)" alt=" product image" width="10%">
-        </dd>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FOOD_ITEM.NAME)
-        </dt>
+                        
+                            <div class="table-responsive-md">
 
-        <dd>
-            @Html.DisplayFor(model => model.FOOD_ITEM.NAME)
-        </dd>
+                                <table align="center" class="table table table-striped">
+                                    <div class="col-md-7 ">
+                                    <tr>
+                                        <th><center>NAME</center></th>
+                                        <td>@Html.DisplayFor(model => model.NAME)</td>
+                                    </tr>
+                            </div>
+                            <div class="col-md-7">
+                                <tr>
+                                    <th><center>PRICE</center></th>
+                                    <td>@Html.DisplayFor(model => model.PRICE)</td>
+                                </tr>
+                            </div>
+                            <div class="col-md-7">
+                                <tr>
+                                    <th><center>QUANTITY</center></th>
+                                    <td>@Html.DisplayFor(model => model.QUANTITY, new { htmlAttributes = new { @class = "form-control my-3 p-2" } })</td>
+                                </tr>
+                            </div>
+                            <div class="col-md-7">
+                                <tr>
+                                    <th><center>PREVIEW</center></th>
+                                    <td><img class="card-img" src="@Url.Content(Model.IMGPATH)" alt=" product image"></td>
+                                </tr>
+                            </div>
+                            <div class="col-md-7">
+                                <tr>
+                                    <th><center>FOOD TYPE</center></th>
+                                    <td>@Html.DisplayFor(model => model.FOOD_ITEM.NAME, new { htmlAttributes = new { @class = "text-center my-3 p-2" } })</td>
+                                </tr>
+                            </div>
+                            </table>
 
-    </dl>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <center>
+                                    <input type="submit" value="DELETE" class="btn btn-admin mt-3 mb-3" />
+                                    <p>See all food items @Html.ActionLink("Click Here", "Display")</p>
+                                </center>
+                            }
 
-    @using (Html.BeginForm())
-    {
-@Html.AntiForgeryToken()
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
 
-                <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Back to List", "Index")
-                </div>}
-</div>
+</html>

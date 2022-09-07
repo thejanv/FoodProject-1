@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<FoodManagement.Models.FOOD_TYPE>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,103 +31,150 @@
     <title>Food Train</title>
 </head>
 <body>
-<div class="container" id="display-food">
-    <h1>All Food Items</h1>
-    <p>
-        <button class="btn btn-danger">
-            <a href="AdminAdd">Create New Food Item</a>
-            @*@Html.ActionLink("Create New", "AdminAdd")*@
-        </button>
-    </p>
-    <div class="table-responsive-sm">
-        <table class="table table-striped table-hover table-bordered" style="box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);">
-            <thead class="thead">
-            <tr>
-                <th scope="col">
-                    <center>
-                        @Html.DisplayNameFor(model => model.NAME)
-                    </center>
-                </th>
-                <th scope="col">
-                    <center>
-                        @Html.DisplayNameFor(model => model.PRICE)
-                    </center>
-                </th>
-                <th scope="col">
-                    <center>
-                        @Html.DisplayNameFor(model => model.QUANTITY)
-                    </center>
-                </th>
-                <th scope="col">
-                    <center>
-                        @Html.Label("TYPE")
-                    </center>
-                </th>
-                <th scope="col">
-                    <center>
-                        PREVIEW
-                    </center>
-                </th>
-                <th scope="col">
-                    <center>
-                        OPTIONS
-                    </center>
-                </th>
-            </tr>
-            </thead>
-
-            
-            <tbody>
-                @foreach (var item in Model)
-                {
+    <div class="container" id="display-food">
+        <h1>All Food Items</h1>
+        <p>
+            <button class="btn btn-danger">
+                <a href="AdminAdd">Create New Food Item</a>
+                @*@Html.ActionLink("Create New", "AdminAdd")*@
+            </button>
+        </p>
+        <div class="table-responsive-sm">
+            <table class="table table-striped table-hover table-bordered" style="box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);">
+                <thead class="thead">
                     <tr>
-                        <td scope="row">
+                        <th scope="col">
                             <center>
-                                @Html.DisplayFor(modelItem => item.NAME)
+                                @Html.DisplayNameFor(model => model.NAME)
                             </center>
-                        </td>
-                        <td>
+                        </th>
+                        <th scope="col">
                             <center>
-                                @Html.DisplayFor(modelItem => item.PRICE)
+                                @Html.DisplayNameFor(model => model.PRICE)
                             </center>
-                        </td>
-                        <td>
+                        </th>
+                        <th scope="col">
                             <center>
-                                @Html.DisplayFor(modelItem => item.QUANTITY)
+                                @Html.DisplayNameFor(model => model.QUANTITY)
                             </center>
-                        </td>
-                        <td>
+                        </th>
+                        <th scope="col">
                             <center>
-                                @Html.DisplayFor(modelItem => item.FOOD_ITEM.NAME)
+                                @Html.Label("TYPE")
                             </center>
-                        </td>
-                        <td>
+                        </th>
+                        <th scope="col">
                             <center>
-                                <img class="card-img-top" src="@Url.Content(item.IMGPATH)">
-
-                                @*@Html.DisplayFor(modelItem => item.IMGPATH)*@
+                                PREVIEW
                             </center>
-                        </td>
-                        <td id="btn-edit">
+                        </th>
+                        <th scope="col">
                             <center>
-                                <button class="btn">
-                                    @*<a href="AdminUpdate">Edit</a>*@
-                                    @Html.ActionLink("Edit", "AdminUpdate", new { id = item.TYPEID })
-                                </button>
-
-                                <button class="btn">
-                                    @*<a href="AdminDelete">Delete</a>*@
-                                    @Html.ActionLink("Delete", "AdminDelete", new { id = item.TYPEID })
-                                </button>
+                                OPTIONS
                             </center>
-                        </td>
+                        </th>
                     </tr>
-                }
+                </thead>
+
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td scope="row">
+                                <center>
+                                    @Html.DisplayFor(modelItem => item.NAME)
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    @Html.DisplayFor(modelItem => item.PRICE)
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    @Html.DisplayFor(modelItem => item.QUANTITY)
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    @Html.DisplayFor(modelItem => item.FOOD_ITEM.NAME)
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <img class="card-img-top" src="@Url.Content(item.IMGPATH)">
+
+                                    @*@Html.DisplayFor(modelItem => item.IMGPATH)*@
+                                </center>
+                            </td>
+                            <td id="btn-edit">
+                                <center>
+                                    <button class="btn">
+                                        @*<a href="AdminUpdate">Edit</a>*@
+                                        @Html.ActionLink("EDIT", "AdminUpdate", new { id = item.TYPEID })
+                                    </button>
+
+                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                        @*<a href="AdminDelete">Delete</a>*@
+                                        @Html.ActionLink("DELETE", "AdminDelete", new { @id = item.TYPEID })
+                                        @*DELETE*@
+                                    </button>
+                                </center>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
-            
-        </table>
+            </table>
+        </div>
+
+        <!-- The Modal -->
+        <!--<div class="modal" id="myModal">
+            <div class="modal-dialog modal-fullscreen-sm-down">
+                <div class="modal-content">-->
+
+                    <!-- Modal Header -->
+                    <!--<div class="modal-header">
+                        <h4 class="modal-title">Are you sure you want to delete this?</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>-->
+
+                    <!-- Modal body -->
+                    <!--<div class="modal-body">
+                        <table class="table tatable-hover">
+                            <tr>
+                                <th>NAME</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>PRICE</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>QUANTITY</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>PREVIEW</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>TYPE</th>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>-->
+
+                    <!-- Modal footer -->
+                    <!--<div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>-->
+
     </div>
-</div>
 </body>
 </html>
 
