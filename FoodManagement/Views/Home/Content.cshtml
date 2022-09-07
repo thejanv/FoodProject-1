@@ -176,12 +176,12 @@
   
 
 
-<section class="bakery" id="bakery">
+<section class="Koththu" id="Koththu">
     <div class="container-fluid">
         <div class="container">
-            <h1>Bakery Items</h1>
+            <h1>Koththu</h1>
             <div class="owl-carousel owl-theme">
-                @foreach (var item in bakery)
+                @foreach (var item in Koththu)
                 {
                     <div class="content-area">
                         <div class="content p-5">
@@ -189,7 +189,7 @@
                                 <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                 <div class="card-body">
                                     <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
-                                    <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
+                                    <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                     <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                     <p class="qty-cart text-center" id="qty-cart">5</p>
                                 </div>
@@ -220,7 +220,7 @@
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
                                         <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
-                                        <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
+                                        <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
@@ -249,7 +249,7 @@
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
                                         <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
-                                        <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
+                                        <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
@@ -289,7 +289,7 @@
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
                                         <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
-                                        <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
+                                        <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
@@ -329,7 +329,7 @@
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
                                         <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
-                                        <p class="card-text text-center">@Html.DisplayFor(modelItem => item.PRICE)</p>
+                                        <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>

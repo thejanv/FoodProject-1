@@ -174,7 +174,7 @@ namespace FoodManagement.Controllers
             return View();
         }
         [ValidateAntiForgeryToken]
-        public ActionResult Authenticate(USER_REGISTRATION user)
+        public ActionResult Authenticate()
         {
             if (ModelState.IsValid)
             {
@@ -193,7 +193,7 @@ namespace FoodManagement.Controllers
                 }
                 if (count > 0)
                 {
-                    return RedirectToAction("Content",user);
+                    return RedirectToAction("Content");
                 }
                 else
                 {
