@@ -117,8 +117,8 @@
 
                                     <button class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
                                         @*<a href="AdminDelete">Delete</a>*@
-                                        @Html.ActionLink("DELETE", "AdminDelete", new { @id = item.TYPEID })
-                                        @*DELETE*@
+                                        @*@Html.ActionLink("DELETE", "AdminDelete", new { @id = item.TYPEID })*@
+                                        DELETE
                                     </button>
                                 </center>
                             </td>
@@ -129,50 +129,35 @@
         </div>
 
         <!-- The Modal -->
-        <!--<div class="modal" id="myModal">
+        <div class="modal" id="myModal">
             <div class="modal-dialog modal-fullscreen-sm-down">
-                <div class="modal-content">-->
+                <div class="modal-content">
 
                     <!-- Modal Header -->
-                    <!--<div class="modal-header">
-                        <h4 class="modal-title">Are you sure you want to delete this?</h4>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Confirmation</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>-->
+                    </div>
 
                     <!-- Modal body -->
-                    <!--<div class="modal-body">
-                        <table class="table tatable-hover">
-                            <tr>
-                                <th>NAME</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>PRICE</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>QUANTITY</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>PREVIEW</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>TYPE</th>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>-->
+                    <div class="modal-body">
+                        <center>
+                            <i class="fa-regular fa-circle-exclamation"></i><br />
+                            <h1>Delete?</h1>
+                            <p>Please ensure and then confirm!</p>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes, delete it!</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel!</button>
+                        </center>
+                    </div>
 
                     <!-- Modal footer -->
-                    <!--<div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer">
+                        
                     </div>
 
                 </div>
             </div>
-        </div>-->
+        </div>
 
     </div>
 </body>
