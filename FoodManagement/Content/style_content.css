@@ -122,22 +122,7 @@
 }*/
 
 
-.bakery {
-    height: 100vh;
-}
 
-.bakery h1 {
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 700;
-}
-
-.bakery .card {
-    background-color: #fff;
-    -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-    -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-    box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-}
 
 .card .card-body .card-title {
     text-transform: capitalize;
@@ -168,7 +153,23 @@
 .card .card-body .qty-cart {
     margin-top: 5px;
 }
+/*<!--===================================Koththu======================================--!>*/
+.Koththu{
+    height:100vh;
+}
 
+    .Koththu h1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .Koththu .card {
+        background-color: #fff;
+        -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+        box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
+    }
 
 /*=============================== bakery =================================== */
 
