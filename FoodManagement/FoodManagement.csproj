@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\admin-delete.jpg" />
     <Content Include="Content\Images\admin-edit.jpg" />
     <Content Include="Content\Images\admin-login.jpg" />
     <Content Include="Content\Images\bg.jpg" />

@@ -12,6 +12,8 @@ namespace FoodManagement.Controllers
 {
     public class HomeController : Controller
     {
+        Random r = new Random();
+
         // GET: Home
         FoodManagementEntities food = new FoodManagementEntities();
 
@@ -22,45 +24,38 @@ namespace FoodManagement.Controllers
             return View();
         }
 
+        // Admin add  post
         [HttpPost]
-        public ActionResult AdminAdd(FOOD_TYPE admin)
+        public ActionResult AdminAdd(FOOD_TYPE product)
         {
-            string fileName = admin.NAME;
-            string extension = Path.GetExtension(admin.ImageFile.FileName);
-            fileName = fileName + extension;
-            admin.IMGPATH = "~/Content/Product/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
-            admin.ImageFile.SaveAs(fileName);
-            food.FOOD_TYPE.Add(admin);
+            SaveImage(product);
+            food.FOOD_TYPE.Add(product);
             food.SaveChanges();
             return RedirectToAction("Display");
         }
 
-        [HttpGet]
+        // Admin update get
         public ActionResult AdminUpdate(int id)
         {
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
             return View(data);
         }
 
+        // Admin update post
         [HttpPost]
-        public ActionResult AdminUpdate(FOOD_TYPE admin, int id)
+        public ActionResult AdminUpdate(FOOD_TYPE product, int id)
         {
-            var data = food.FOOD_TYPE.FirstOrDefault(x=>x.TYPEID==id);
+            var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
             if (data != null)
             {
-                data.NAME = admin.NAME;
-                data.PRICE = admin.PRICE;
-                data.QUANTITY = admin.QUANTITY;
-                
-
-                string fileName = admin.NAME;
-                string extension = Path.GetExtension(admin.ImageFile.FileName);
-                fileName = fileName + extension;
-                data.IMGPATH = "~/Content/Product/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
-                admin.ImageFile.SaveAs(fileName);
-
+                data.NAME = product.NAME;
+                data.PRICE = product.PRICE;
+                data.QUANTITY = product.QUANTITY;
+                if (product.ImageFile != null)
+                {
+                    PicDelete(data);
+                    SaveImage(product, data);
+                }
                 food.SaveChanges();
                 return RedirectToAction("Display");
             }
@@ -70,6 +65,28 @@ namespace FoodManagement.Controllers
             }
         }
 
+        // delete photo in product folder
+        private void PicDelete(FOOD_TYPE data)
+        {
+            var t = Path.Combine(Server.MapPath(data.IMGPATH));
+            FileInfo fi = new FileInfo(t);
+            if (fi.Exists)
+                fi.Delete();
+        }
+
+        // save image to product folder
+        private void SaveImage(FOOD_TYPE newData, FOOD_TYPE prewData = null)
+        {
+            prewData = prewData ?? newData;
+            string fileName = r.Next().ToString();
+            string extension = Path.GetExtension(newData.ImageFile.FileName);
+            fileName = fileName + extension;
+            prewData.IMGPATH = "~/Content/Product/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Content/Product/"), fileName);
+            newData.ImageFile.SaveAs(fileName);
+        }
+
+        // Delete Get
         public ActionResult AdminDelete(int? id)
         {
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
@@ -80,15 +97,13 @@ namespace FoodManagement.Controllers
             return View(data);
         }
 
+        // Detele Post
         [HttpPost, ActionName("AdminDelete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
-            var t = Path.Combine(Server.MapPath(data.IMGPATH));
-            FileInfo fi = new FileInfo(t);
-            if (fi.Exists)
-                fi.Delete();
+            PicDelete(data);
             food.FOOD_TYPE.Remove(data);
             food.SaveChanges();
             return RedirectToAction("Display");
