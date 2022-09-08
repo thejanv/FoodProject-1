@@ -29,6 +29,15 @@
     <script src="https://kit.fontawesome.com/2243ae231d.js" crossorigin="anonymous"></script>
 
     <title>Food Train</title>
+
+    <script>
+        function DeleteConfirm() {
+            if (confirm("Are you sure want to delete record"))
+                return true;
+            else
+                return false;
+        }
+    </script>
 </head>
 <body>
     <div class="container" id="display-food">
@@ -115,48 +124,16 @@
                                         @Html.ActionLink("EDIT", "AdminUpdate", new { id = item.TYPEID })
                                     </button>
 
-                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#myModal" >
                                         @*<a href="AdminDelete">Delete</a>*@
-                                        @*@Html.ActionLink("DELETE", "AdminDelete", new { @id = item.TYPEID })*@
-                                        DELETE
+                                        @Html.ActionLink("DELETE", "AdminDelete", new { @id = item.TYPEID })                                   
                                     </button>
                                 </center>
                             </td>
-                        </tr>
+                        </tr>                    
                     }
                 </tbody>
             </table>
-        </div>
-
-        <!-- The Modal -->
-        <div class="modal" id="myModal">
-            <div class="modal-dialog modal-fullscreen-sm-down">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Confirmation</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <center>
-                            <i class="fa-regular fa-circle-exclamation"></i><br />
-                            <h1>Delete?</h1>
-                            <p>Please ensure and then confirm!</p>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes, delete it!</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel!</button>
-                        </center>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        
-                    </div>
-
-                </div>
-            </div>
         </div>
 
     </div>

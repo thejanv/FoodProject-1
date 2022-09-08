@@ -362,12 +362,14 @@
 
 .modal-body i{
     color:red;
-    /*background-color:red;*/
+    font-size:50px;
 }
 
 
-
-
+.modal-body #delete{
+    font-weight:700;
+    font-size:50px;
+}
 
 
 /*=============================== AdminAdd =================================== */
@@ -490,11 +492,24 @@
         border: none;
         outline: none;
         height: 50px;
-        width: 60%;
+        width: 100%;
+        background-color: red;
+        color: #fff;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .delete .btn-cancel {
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
         background-color: #000;
         color: #fff;
         border-radius: 4px;
         font-weight: bold;
+        text-decoration:none;
+        color:#fff;
     }
 
 .delete .btn-admin:hover {
@@ -502,6 +517,12 @@
         border: 2px solid;
         color: #000
 }
+
+    .delete .btn-cancel:hover {
+        background: #fff;
+        border: 2px solid;
+        color: #000
+    }
 
     .delete .card-img {
         width: 100px;
