@@ -47,7 +47,7 @@
 .navbar {
     background-color: #000;
     color: #fff;
-    margin-bottom: px;
+    margin-bottom: 5px;
 }
 
 #header-navbar .nav-item a {
@@ -73,7 +73,7 @@
 }
 
 #searchBtn {
-    margin: 5px;
+    margin: 4px;
 }
 
 #mainNavBar1 {
