@@ -188,68 +188,178 @@ namespace FoodManagement.Controllers
 
             return View();
         }
-        [ValidateAntiForgeryToken]
+        
         public ActionResult Authenticate()
         {
-            if (ModelState.IsValid)
-            {
                 var data = food.USER_REGISTRATION.ToList();
-                int count = 0;
 
-                foreach (USER_REGISTRATION item in data)
+
+            foreach (USER_REGISTRATION item in data)
+            {
+
+                if (Request.Form["email"].Equals(item.EMAIL) && Request.Form["password"].Equals(item.PASSWORD))
                 {
-
-                    if (Request.Form["email"].Equals(item.EMAIL) && Request.Form["password"].Equals(item.PASSWORD))
-                    {
-
-                        count++;
-                    }
-
-                }
-                if (count > 0)
-                {
+                    Session["user"] = item;
+                    Session["flag"] = true;
                     return RedirectToAction("Content");
                 }
-                else
-                {
-                    ViewBag.msg = "Please provide correct E-Mail and Password";
+
+            }
+
+
+
+            ViewBag.msg = "Please provide correct E-Mail Id and Password";
                     return View("Login");
-                }
-
-            }
-            else
-            {
-                ViewBag.msg = "Please provide correct E-Mail and Password";
-                return View("Login");
-            }
         }
-        //===========Add to Cart and Check out=============================================================
-       /* public ActionResult AddToCart()
+        /*public ActionResult UserUpdate()
         {
-            return View();
+            var data = Session["user"];
+            return View(data);
         }
-        [HttpPost]
-        public ActionResult AddToCart(int id,int quantity)
+        public ActionResult UserUpdate(USER_REGISTRATION user)
         {
-            var data = food.FOOD_TYPE.Find(id);
-            int addId = data.TYPEID;
-            
-            string name = data.NAME;
-            int totalPrice = data.PRICE * quantity;
 
-            if (data != null)
+            if (Session["user"] != null)
             {
-                food.ADDTOCARTs.Add(new ADDTOCART (addId,name,quantity,totalPrice));
+                var name = (Session["user"] as USER_REGISTRATION).NAME;
+                var email = (Session["user"] as USER_REGISTRATION).EMAIL;
+                var mobile = (Session["user"] as USER_REGISTRATION).MOBILE;
+                var password = (Session["user"] as USER_REGISTRATION).PASSWORD;
+                var address = (Session["user"] as USER_REGISTRATION).ADDRESS;
+
+                name = user.NAME;
+                email = user.EMAIL;
+                mobile = user.MOBILE;
+                password = user.PASSWORD;
+                address = user.ADDRESS;
+
                 food.SaveChanges();
-                return RedirectToAction("AddToCart");
+                return RedirectToAction("Content");
             }
             else
             {
                 return View();
             }
-
-           
-            
         }*/
+        //===========Add to Cart and Check out=============================================================
+
+
+        //======================================================================
+        private int IsExistig(int id)
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            for (var n = 0; n < cart.Count; n++)
+            {
+                if (cart[n].Type.TYPEID.Equals(id))
+                {
+                    return n;
+                }
+            }
+            return -1;
+        }
+
+        public ActionResult OrderNow(int id)
+        {
+            var item = food.FOOD_TYPE.Find(id);
+            var userID = ((Session["user"] as USER_REGISTRATION).USERID);
+
+            if ((bool)Session["flag"])
+            {
+                int foodCount = food.FOOD_TYPE.Count();
+                for (var i = 1; i <= foodCount; i++)
+                {
+                    var userCart = food.ADDTOCARTs.Where(x => (x.USERID == userID) &&
+                                                 (x.TYPEID == i)).FirstOrDefault();
+                    if (userCart != null)
+                    {
+                        if (Session["cart"] != null)
+                        {
+                            List<Item> cart = (List<Item>)Session["cart"];
+                            cart.Add(new Item(userCart.FOOD_TYPE, (int)userCart.QUANTITY));
+                            Session["cart"] = cart;
+                        }
+                        else
+                        {
+                            List<Item> cart = new List<Item>();
+                            cart.Add(new Item(userCart.FOOD_TYPE, (int)userCart.QUANTITY));
+                            Session["cart"] = cart;
+                        }
+                    }
+                }
+                Session["flag"] = false;
+            }
+
+
+            if (item.QUANTITY != 0)
+            {
+                if (Session["cart"] == null)
+                {
+                    List<Item> cart = new List<Item>();
+                    cart.Add(new Item(item, 1));
+                    Session["cart"] = cart;
+                }
+                else
+                {
+                    List<Item> cart = (List<Item>)Session["cart"];
+                    int index = IsExistig(id);
+                    if (index.Equals(-1))
+                    {
+                        cart.Add(new Item(item, 1));
+                    }
+                    else
+                    {
+                        cart[index].Quantity++;
+                    }
+
+                    Session["cart"] = cart;
+                }
+            }
+
+            return RedirectToAction("Content");
+
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var item = food.FOOD_TYPE.Find(id);
+            int index = IsExistig(id);
+            List<Item> cart = (List<Item>)Session["cart"];
+            cart[index].Quantity--;
+            if (cart[index].Quantity.Equals(0))
+            {
+                cart.RemoveAt(index);
+            }
+            Session["cart"] = cart;
+            return View("Cart");
+        }
+
+        public ActionResult Checkout()
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            var userID = ((Session["user"] as USER_REGISTRATION).USERID);
+
+            for (int i = 0; i < cart.Count; i++)
+            {
+                var item = cart[i];
+                var userCart = food.ADDTOCARTs.Where(x => (x.USERID == userID) &&
+                                                (x.TYPEID == i + 1)).FirstOrDefault();
+                if (userCart != null)
+                {
+                    userCart.QUANTITY = item.Quantity;
+                }
+                else
+                {
+
+                    /*userCart.QUANTITY -= item.Quantity;*/
+                    food.ADDTOCARTs.Add(new ADDTOCART { USERID = userID, TYPEID = item.Type.TYPEID, NAME = item.Type.NAME, QUANTITY = item.Quantity, PRICE = item.Type.PRICE });
+                }
+            }
+            food.SaveChanges();
+            return View();
+        }
+        public ActionResult Cart()
+        {
+            return View(food.ADDTOCARTs.ToList());
+        }
     }
 }

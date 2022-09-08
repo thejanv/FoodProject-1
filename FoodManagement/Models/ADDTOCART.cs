@@ -24,7 +24,7 @@ namespace FoodManagement.Models
         public virtual USER_REGISTRATION USER_REGISTRATION { get; set; }
         public virtual FOOD_TYPE FOOD_TYPE { get; set; }
 
-        /*public ADDTOCART(int TYPEID, string NAME,int QUANTITY,int PRICE)
+        /*public ADDTOCART(int TYPEID, string NAME, int QUANTITY, int PRICE)
         {
             //this.USERID = USERID;
             this.TYPEID = TYPEID;

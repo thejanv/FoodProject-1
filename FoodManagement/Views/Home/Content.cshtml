@@ -117,28 +117,32 @@
                             <li class="nav-item">
                                 <a href="#User" class="nav-link">USER</a>
                             </li>
-                        </ul>
-
-
-
-
-
-                    @using (Html.BeginForm("Content", "Home", FormMethod.Get))
-                    {
-
-                        <ul class="navbar-nav ms-auto">
 
                             <li class="nav-item">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="name" id="name"/>
-                            </li>
-
-                            <li class="nav-item">
-                                <center>
-                                    <button class="btn btn-secondary mr-sm-0 " type="submit" id="searchBtn">Search</button>
-                                </center>
+                                <a href="Cart" class="nav-link">Check</a>
                             </li>
                         </ul>
-                    }
+
+
+
+
+
+                        @using (Html.BeginForm("Content", "Home", FormMethod.Get))
+                        {
+
+                            <ul class="navbar-nav ms-auto">
+
+                                <li class="nav-item">
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="name" id="name" />
+                                </li>
+
+                                <li class="nav-item">
+                                    <center>
+                                        <button class="btn btn-secondary mr-sm-0 " type="submit" id="searchBtn">Search</button>
+                                    </center>
+                                </li>
+                            </ul>
+                        }
                     </div>
                 </div>
             </div>
@@ -175,7 +179,7 @@
     }
   
 
-
+  
 <section class="Koththu" id="Koththu">
     <div class="container-fluid">
         <div class="container">
@@ -190,7 +194,10 @@
                                 <div class="card-body">
                                     <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
                                     <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                    <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
+                                    <a href="Cart" ><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
+                                    @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
+                                    
+                                    
                                     <p class="qty-cart text-center" id="qty-cart">5</p>
                                 </div>
                             </div>
@@ -203,7 +210,8 @@
         </div>
     </div>
 </section>
-
+    
+    
 
     <!--Koththu section ends-->
     <!--Bakery section starts-->
@@ -222,6 +230,7 @@
                                         <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
+                                        @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
                                 </div>
@@ -251,6 +260,7 @@
                                         <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
+                                        @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
                                 </div>
@@ -291,6 +301,7 @@
                                         <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
+                                        @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
                                 </div>
@@ -331,6 +342,7 @@
                                         <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
+                                        @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
                                 </div>
