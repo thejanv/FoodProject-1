@@ -1,49 +1,6 @@
 ﻿@model IEnumerable<FoodManagement.Models.FOOD_TYPE>
 @using FoodManagement.Models
 
-@*@model  FoodManagement.Models.USER_REGISTRATION*@
-@*@model Tuple<USER_REGISTRATION,IEnumerator<FOOD_TYPE>>*@
-
-
-<!--<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Price
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th>
-           Item Type
-        </th>
-    </tr>
-
-    @foreach (FOOD_TYPE item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRICE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QUANTITY)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FOOD_ITEM.NAME)
-            </td>
-        </tr>
-    }
-
-</table>-->
-@*@Html.ActionLink("Change Profile Details", "Update", new { id = Model.Item1.USERID })*@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,7 +72,7 @@
 
 
                             <li class="nav-item">
-                                <a href="#User" class="nav-link">USER</a>
+                                <a href="UserUpdate" class="nav-link">USER</a>
                             </li>
 
                             <li class="nav-item">
@@ -194,11 +151,11 @@
                                 <div class="card-body">
                                     <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
                                     <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                    <a href="Cart" ><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                    @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
+                                    @*<button class="button" id="link-order">*@ @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID , style = "color:#fff;text-decoration:none" }, null) <i class="fa-solid fa-cart-plus"></i>@*</button>*@
                                     
                                     
-                                    <p class="qty-cart text-center" id="qty-cart">5</p>
+                                    
+                                <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +188,7 @@
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
                                         @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
-                                        <p class="qty-cart text-center" id="qty-cart">5</p>
+                                    <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
                                     </div>
                                 </div>
                             </div>

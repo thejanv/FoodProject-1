@@ -38,5 +38,14 @@ namespace FoodManagement.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ADDTOCART> ADDTOCARTs { get; set; }
+
+      /*  public USER_REGISTRATION()
+        {
+
+        }
+        public USER_REGISTRATION()
+        {
+
+        }*/
     }
 }

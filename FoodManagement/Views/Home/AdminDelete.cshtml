@@ -79,24 +79,24 @@
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                    
+
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6" id="admin-delete">
                                         <center>
                                             <input type="submit" value="Yes, delete it!" class="btn btn-admin mt-3 mb-3" />
-                                        </center>                                        
+                                        </center>
                                     </div>
                                     <div class="col-md-6" id="admin-cancel">
                                         <center>
-                                            <button type="button" class="btn btn-cancel mt-3 mb-3">@Html.ActionLink("No, cancel it!", "Display", new { @class = "btn btn-cancel mt-3 mb-3", style = "color:#fff;text-decoration:none" } )</button>
+                                            <button type="button" class="btn btn-cancel mt-3 mb-3">@Html.ActionLink("No, cancel it!", "Display", new { @class = "btn btn-cancel mt-3 mb-3" })</button>
                                             @*<button type="submit" class="btn btn-cancel mt-3 mb-3">@Html.ActionLink("No, cancel it!", "Display", new { @class = "btn btn-cancel mt-3 mb-3" })</button>*@
-                                        </center>                                        
+                                        </center>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <center>                       
+
+                            <center>
                                 <p>See all food items @Html.ActionLink("Click Here", "Display")</p>
                             </center>
                         }
