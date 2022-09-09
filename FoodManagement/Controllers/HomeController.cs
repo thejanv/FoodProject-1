@@ -211,27 +211,24 @@ namespace FoodManagement.Controllers
             ViewBag.msg = "Please provide correct E-Mail Id and Password";
                     return View("Login");
         }
-        /*public ActionResult UserUpdate()
+        public ActionResult UserUpdate()
         {
             var data = Session["user"];
             return View(data);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UserUpdate(USER_REGISTRATION user)
         {
-
-            if (Session["user"] != null)
+            var id = (Session["user"] as USER_REGISTRATION).USERID;
+            var data = food.USER_REGISTRATION.Find(id);
+            if (ModelState.IsValid && data != null)
             {
-                var name = (Session["user"] as USER_REGISTRATION).NAME;
-                var email = (Session["user"] as USER_REGISTRATION).EMAIL;
-                var mobile = (Session["user"] as USER_REGISTRATION).MOBILE;
-                var password = (Session["user"] as USER_REGISTRATION).PASSWORD;
-                var address = (Session["user"] as USER_REGISTRATION).ADDRESS;
-
-                name = user.NAME;
-                email = user.EMAIL;
-                mobile = user.MOBILE;
-                password = user.PASSWORD;
-                address = user.ADDRESS;
+                data.NAME = user.NAME;
+                data.EMAIL = user.EMAIL;
+                data.MOBILE = user.MOBILE;
+                data.PASSWORD = user.PASSWORD;
+                data.ADDRESS = user.ADDRESS;
 
                 food.SaveChanges();
                 return RedirectToAction("Content");
@@ -240,7 +237,7 @@ namespace FoodManagement.Controllers
             {
                 return View();
             }
-        }*/
+        }
         //===========Add to Cart and Check out=============================================================
 
 
@@ -257,14 +254,11 @@ namespace FoodManagement.Controllers
             }
             return -1;
         }
-
-        public ActionResult OrderNow(int id)
+        void cartCall()
         {
-            var item = food.FOOD_TYPE.Find(id);
-            var userID = ((Session["user"] as USER_REGISTRATION).USERID);
-
             if ((bool)Session["flag"])
             {
+                var userID = ((Session["user"] as USER_REGISTRATION).USERID);
                 int foodCount = food.FOOD_TYPE.Count();
                 for (var i = 1; i <= foodCount; i++)
                 {
@@ -288,6 +282,14 @@ namespace FoodManagement.Controllers
                 }
                 Session["flag"] = false;
             }
+        }
+
+        public ActionResult OrderNow(int id)
+        {
+            var item = food.FOOD_TYPE.Find(id);
+            cartCall();
+
+            
 
 
             if (item.QUANTITY != 0)
@@ -350,7 +352,7 @@ namespace FoodManagement.Controllers
                 else
                 {
 
-                    /*userCart.QUANTITY -= item.Quantity;*/
+                    userCart.QUANTITY -= item.Quantity;
                     food.ADDTOCARTs.Add(new ADDTOCART { USERID = userID, TYPEID = item.Type.TYPEID, NAME = item.Type.NAME, QUANTITY = item.Quantity, PRICE = item.Type.PRICE });
                 }
             }
@@ -359,6 +361,7 @@ namespace FoodManagement.Controllers
         }
         public ActionResult Cart()
         {
+            cartCall();
             return View(food.ADDTOCARTs.ToList());
         }
     }

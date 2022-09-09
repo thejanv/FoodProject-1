@@ -154,8 +154,8 @@
     margin-top: 5px;
 }
 /*<!--===================================Koththu======================================--!>*/
-.Koththu{
-    height:100vh;
+.Koththu {
+    height: 100vh;
 }
 
     .Koththu h1 {
@@ -170,10 +170,12 @@
         -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
         box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
     }
+/*#link-order{
+    text-decoration:none;
+    color:#fff;
 
+}*/
 /*=============================== bakery =================================== */
-
-
 .bakery {
     height: 100vh;
 }
@@ -322,14 +324,14 @@
 }
 
 
-#display-food .btn a{
+#display-food .btn a {
     color: #ffffff;
     font-weight: 600;
     text-decoration: none;
 }
 
 
-#display-food #btn-edit a{
+#display-food #btn-edit a {
     color: #ffffff;
     font-weight: 600;
     text-decoration: none;
@@ -362,39 +364,39 @@
     height: 90vh;
 }
 
-.admin .row-no-gutters {
-    background: #fff;
-    border-radius: 30px;
-    box-shadow: 12px 12px 22px grey;
-}    
+    .admin .row-no-gutters {
+        background: #fff;
+        border-radius: 30px;
+        box-shadow: 12px 12px 22px grey;
+    }
 
-.admin img {
-    border-radius: 30px;
-    margin-right: 150px;
-}
+    .admin img {
+        border-radius: 30px;
+        margin-right: 150px;
+    }
 
-.admin h1 {
-    text-transform: capitalize;
-    font-weight: 700;
-    text-align: center;
-}
+    .admin h1 {
+        text-transform: capitalize;
+        font-weight: 700;
+        text-align: center;
+    }
 
-.admin .btn-admin {
-    border: none;
-    outline: none;
-    height: 50px;
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    border-radius: 4px;
-    font-weight: bold;
-}
+    .admin .btn-admin {
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        background-color: #000;
+        color: #fff;
+        border-radius: 4px;
+        font-weight: bold;
+    }
 
-.admin .btn-admin:hover {
-    background: #fff;
-    border: 2px solid;
-    color: #000
-}
+        .admin .btn-admin:hover {
+            background: #fff;
+            border: 2px solid;
+            color: #000
+        }
 
 
 
@@ -404,39 +406,39 @@
     height: 90vh;
 }
 
-.update .row-no-gutters {
-    background: #fff;
-    border-radius: 30px;
-    box-shadow: 12px 12px 22px grey;
-}
+    .update .row-no-gutters {
+        background: #fff;
+        border-radius: 30px;
+        box-shadow: 12px 12px 22px grey;
+    }
 
-.update img {
-    border-radius: 30px;
-    margin-right: 150px;
-}
+    .update img {
+        border-radius: 30px;
+        margin-right: 150px;
+    }
 
-.update h1 {
-    text-transform: capitalize;
-    font-weight: 700;
-    text-align: center;
-}
+    .update h1 {
+        text-transform: capitalize;
+        font-weight: 700;
+        text-align: center;
+    }
 
-.update .btn-update {
-    border: none;
-    outline: none;
-    height: 50px;
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    border-radius: 4px;
-    font-weight: bold;
-}
+    .update .btn-update {
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        background-color: #000;
+        color: #fff;
+        border-radius: 4px;
+        font-weight: bold;
+    }
 
-.update .btn-update:hover {
-    background: #fff;
-    border: 2px solid;
-    color: #000
-}
+        .update .btn-update:hover {
+            background: #fff;
+            border: 2px solid;
+            color: #000
+        }
 
 
 /*=============================== AdminDelete =================================== */
@@ -445,20 +447,20 @@
     height: 90vh;
 }
 
-.delete .row-no-gutters {
+    .delete .row-no-gutters {
         background: #fff;
         border-radius: 30px;
         box-shadow: 12px 12px 22px grey;
     }
 
-.delete img {
+    .delete img {
         border-radius: 30px;
         margin-right: 150px;
     }
 
-.delete h3 {
+    .delete h3 {
         text-transform: capitalize;
-        color:red;
+        color: red;
         font-weight: 700;
         text-align: center;
         margin-bottom: 30px;
@@ -484,15 +486,90 @@
         font-weight: bold;
     }
 
-.delete .btn-admin:hover {
-        background: #fff;
-        border: 2px solid;
-        color: #000
-}
+        .delete .btn-admin:hover {
+            background: #fff;
+            border: 2px solid;
+            color: #000
+        }
 
     .delete .card-img {
         width: 100px;
         padding-left: auto;
-        margin-left:auto;
+        margin-left: auto;
     }
 
+/*=============================== AdminDelete =================================== */
+
+.delete {
+    height: 90vh;
+}
+
+    .delete .row-no-gutters {
+        background: #fff;
+        border-radius: 30px;
+        box-shadow: 12px 12px 22px grey;
+    }
+
+    .delete img {
+        border-radius: 30px;
+        margin-right: 150px;
+    }
+
+    .delete h3 {
+        text-transform: capitalize;
+        color: red;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .delete table th {
+        padding-left: 50px;
+    }
+
+    .delete table td {
+        text-align: left;
+        padding-left: auto;
+    }
+
+    .delete .btn-admin {
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        background-color: red;
+        color: #fff;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .delete .btn-cancel {
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        background-color: #000;
+        color: #fff;
+        border-radius: 4px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .delete .btn-admin:hover {
+        background: #fff;
+        border: 2px solid;
+        color: #000
+    }
+
+    .delete .btn-cancel:hover {
+        background: #fff;
+        border: 2px solid;
+        color: #000
+    }
+
+    .delete .card-img {
+        width: 100px;
+        padding-left: auto;
+        margin-left: auto;
+    }

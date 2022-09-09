@@ -40,53 +40,69 @@
 
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        
-                            <div class="table-responsive-md">
 
-                                <table align="center" class="table table table-striped">
-                                    <div class="col-md-7 ">
-                                    <tr>
-                                        <th><center>NAME</center></th>
-                                        <td>@Html.DisplayFor(model => model.NAME)</td>
-                                    </tr>
-                            </div>
-                            <div class="col-md-7">
-                                <tr>
-                                    <th><center>PRICE</center></th>
-                                    <td>@Html.DisplayFor(model => model.PRICE)</td>
-                                </tr>
-                            </div>
-                            <div class="col-md-7">
-                                <tr>
-                                    <th><center>QUANTITY</center></th>
-                                    <td>@Html.DisplayFor(model => model.QUANTITY, new { htmlAttributes = new { @class = "form-control my-3 p-2" } })</td>
-                                </tr>
-                            </div>
-                            <div class="col-md-7">
-                                <tr>
-                                    <th><center>PREVIEW</center></th>
-                                    <td><img class="card-img" src="@Url.Content(Model.IMGPATH)" alt=" product image"></td>
-                                </tr>
-                            </div>
-                            <div class="col-md-7">
-                                <tr>
-                                    <th><center>FOOD TYPE</center></th>
-                                    <td>@Html.DisplayFor(model => model.FOOD_ITEM.NAME, new { htmlAttributes = new { @class = "text-center my-3 p-2" } })</td>
-                                </tr>
-                            </div>
-                            </table>
+                        <div class="table-responsive-md">
 
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
-                                <center>
-                                    <input type="submit" value="DELETE" class="btn btn-admin mt-3 mb-3" />
-                                    <p>See all food items @Html.ActionLink("Click Here", "Display")</p>
-                                </center>
-                            }
+                            <table align="center" class="table table table-striped">
+                                <div class="col-md-7 ">
+                                <tr>
+                                    <th><center>NAME</center></th>
+                                    <td>@Html.DisplayFor(model => model.NAME)</td>
+                                </tr>
+                        </div>
+                        <div class="col-md-7">
+                            <tr>
+                                <th><center>PRICE</center></th>
+                                <td>@Html.DisplayFor(model => model.PRICE)</td>
+                            </tr>
+                        </div>
+                        <div class="col-md-7">
+                            <tr>
+                                <th><center>QUANTITY</center></th>
+                                <td>@Html.DisplayFor(model => model.QUANTITY, new { htmlAttributes = new { @class = "form-control my-3 p-2" } })</td>
+                            </tr>
+                        </div>
+                        <div class="col-md-7">
+                            <tr>
+                                <th><center>PREVIEW</center></th>
+                                <td><img class="card-img" src="@Url.Content(Model.IMGPATH)" alt=" product image"></td>
+                            </tr>
+                        </div>
+                        <div class="col-md-7">
+                            <tr>
+                                <th><center>FOOD TYPE</center></th>
+                                <td>@Html.DisplayFor(model => model.FOOD_ITEM.NAME, new { htmlAttributes = new { @class = "text-center my-3 p-2" } })</td>
+                            </tr>
+                        </div>
+                        </table>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6" id="admin-delete">
+                                        <center>
+                                            <input type="submit" value="Yes, delete it!" class="btn btn-admin mt-3 mb-3" />
+                                        </center>
+                                    </div>
+                                    <div class="col-md-6" id="admin-cancel">
+                                        <center>
+                                            <button type="button" class="btn btn-cancel mt-3 mb-3">@Html.ActionLink("No, cancel it!", "Display", new { @class = "btn btn-cancel mt-3 mb-3" })</button>
+                                            @*<button type="submit" class="btn btn-cancel mt-3 mb-3">@Html.ActionLink("No, cancel it!", "Display", new { @class = "btn btn-cancel mt-3 mb-3" })</button>*@
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <center>
+                                <p>See all food items @Html.ActionLink("Click Here", "Display")</p>
+                            </center>
+                        }
 
                     </div>
-                    
+
                 </div>
             </div>
         </div>
