@@ -221,7 +221,7 @@ namespace FoodManagement.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UserUpdate(USER_REGISTRATION user,string repassword)
+        public ActionResult UserUpdate(USER_REGISTRATION user, string repassword)
         {
             var id = (Session["user"] as USER_REGISTRATION).USERID;
             var data = food.USER_REGISTRATION.Find(id);
@@ -247,7 +247,6 @@ namespace FoodManagement.Controllers
             }
         }
         //===========Add to Cart and Check out=============================================================
-
 
 
         //======================================================================
