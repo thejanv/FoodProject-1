@@ -140,6 +140,7 @@ namespace FoodManagement.Controllers
         {
             return View();
         }
+        // Adding users 
         public ActionResult Index()
         {
 
@@ -167,6 +168,7 @@ namespace FoodManagement.Controllers
         }
 
         // [Authorize]
+        //Displaying all the products 
         public new ActionResult Content(string name)
         {
             if (name != null)
@@ -211,6 +213,7 @@ namespace FoodManagement.Controllers
             ViewBag.msg = "Please provide correct E-Mail Id and Password";
                     return View("Login");
         }
+        //Updating 
         public ActionResult UserUpdate()
         {
             var data = Session["user"];
@@ -218,11 +221,11 @@ namespace FoodManagement.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UserUpdate(USER_REGISTRATION user)
+        public ActionResult UserUpdate(USER_REGISTRATION user,string repassword)
         {
             var id = (Session["user"] as USER_REGISTRATION).USERID;
             var data = food.USER_REGISTRATION.Find(id);
-            if (ModelState.IsValid && data != null)
+            if (ModelState.IsValid && data != null && user.PASSWORD == repassword)
             {
                 data.NAME = user.NAME;
                 data.EMAIL = user.EMAIL;
@@ -232,6 +235,11 @@ namespace FoodManagement.Controllers
 
                 food.SaveChanges();
                 return RedirectToAction("Content");
+            }
+            else if (user.PASSWORD != repassword)
+            {
+                ViewBag.msg = "Password and re-type password are not matched";
+                return View(user);
             }
             else
             {
