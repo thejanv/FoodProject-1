@@ -224,6 +224,7 @@ namespace FoodManagement.Controllers
         public ActionResult UserUpdate(USER_REGISTRATION user,string repassword)
         {
             var id = (Session["user"] as USER_REGISTRATION).USERID;
+            
             var data = food.USER_REGISTRATION.Find(id);
             if (ModelState.IsValid && data != null && user.PASSWORD == repassword)
             {

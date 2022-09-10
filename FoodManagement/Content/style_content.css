@@ -29,6 +29,8 @@
     height: 100vh;
 }*/
 
+
+
 #header-content h1 {
     font-weight: 500;
     font-size: 100px;
@@ -67,13 +69,18 @@
     color: #000;
     text-decoration: none;
 }
+#header-navbar .nav-item{
+    padding:5px 30px;
+}
 
-#searchBox {
-    margin-top: 5px;
+#name {
+    margin-right: 5px;
+    margin-top: 4px;
 }
 
 #searchBtn {
-    margin: 4px;
+    margin-left:5px;
+    margin-top: 4px;
 }
 
 #mainNavBar1 {
@@ -549,7 +556,7 @@
         height: 50px;
         width: 100%;
         background-color: #000;
-        color: #fff;
+        
         border-radius: 4px;
         font-weight: bold;
         text-decoration: none;
@@ -572,4 +579,25 @@
         width: 100px;
         padding-left: auto;
         margin-left: auto;
+    }
+   /*============== Cart ========================================================*/
+.btn-cart {
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 40%;
+    background-color: blue;
+    
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+    .btn-cart:hover {
+        background-color:#000;
+        border: 2px;
+        color: #fff;
+        outline:solid;
+        outline-color:white;
+       
     }
