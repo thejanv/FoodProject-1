@@ -145,29 +145,31 @@
     }
 
 
-    <!--Koththu section starts-->
-    <section class="Koththu" id="Koththu">
-        <div class="container-fluid">
-            <div class="container">
-                <h1>Koththu</h1>
-                <div class="owl-carousel owl-theme">
-                    @foreach (var item in Koththu)
-                    {
-                        <div class="content-area">
-                            <div class="content p-5">
-                                <div class="card text-center">
-                                    <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5>
-                                        <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                        <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> @*@Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID })*@ Order Now  <i class="fa-solid fa-cart-plus"></i></button>
-
-                                        <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
-                                    </div>
+  
+<section class="Koththu" id="Koththu">
+    <div class="container-fluid">
+        <div class="container">
+            <h1>Koththu</h1>
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in Koththu)
+                {
+                    <div class="content-area">
+                        <div class="content p-5">
+                            <div class="card text-center">
+                                <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                    <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
+                                    @*<button class="button" id="link-order">*@ @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID , @style = "color:#fff;text-decoration:none" }, null) <i class="fa-solid fa-cart-plus"></i>@*</button>*@
+                                    
+                                    
+                                    
+                                <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
                                 </div>
                             </div>
                         </div>
-                    }
+                    </div>
+                }
 
 
                 </div>
