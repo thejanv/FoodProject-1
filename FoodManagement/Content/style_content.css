@@ -153,6 +153,10 @@
 .card .card-body .qty-cart {
     margin-top: 5px;
 }
+
+
+
+
 /*<!--===================================Koththu======================================--!>*/
 .Koththu {
     height: 100vh;
@@ -170,11 +174,10 @@
         -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
         box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
     }
-/*#link-order{
-    text-decoration:none;
-    color:#fff;
 
-}*/
+    
+
+
 /*=============================== bakery =================================== */
 .bakery {
     height: 100vh;

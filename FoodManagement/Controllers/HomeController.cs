@@ -188,10 +188,10 @@ namespace FoodManagement.Controllers
 
             return View();
         }
-        
+
         public ActionResult Authenticate()
         {
-                var data = food.USER_REGISTRATION.ToList();
+            var data = food.USER_REGISTRATION.ToList();
 
 
             foreach (USER_REGISTRATION item in data)
@@ -209,7 +209,7 @@ namespace FoodManagement.Controllers
 
 
             ViewBag.msg = "Please provide correct E-Mail Id and Password";
-                    return View("Login");
+            return View("Login");
         }
         public ActionResult UserUpdate()
         {
@@ -239,6 +239,7 @@ namespace FoodManagement.Controllers
             }
         }
         //===========Add to Cart and Check out=============================================================
+
 
 
         //======================================================================
@@ -289,7 +290,7 @@ namespace FoodManagement.Controllers
             var item = food.FOOD_TYPE.Find(id);
             cartCall();
 
-            
+
 
 
             if (item.QUANTITY != 0)

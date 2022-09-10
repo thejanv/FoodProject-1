@@ -53,10 +53,10 @@
 
                             <li class="nav-item">
                                 <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         FOODS
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <button class="dropdown-item"><a href="#koththu" id="dropButton">KOTHTHU</a></button>
                                         <button class="dropdown-item"><a href="#bakery" id="dropButton">BAKERY ITEMS</a></button>
                                         <button class="dropdown-item"><a href="#pizza" id="dropButton">PIZZA</a></button>
@@ -72,7 +72,16 @@
 
 
                             <li class="nav-item">
-                                <a href="UserUpdate" class="nav-link">USER</a>
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        USER
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button class="dropdown-item"><a href="UserUpdate" id="dropButton">DASHBOARD</a></button>
+                                        <button class="dropdown-item"><a href="Front" id="dropButton">LOGOUT</a></button>
+                                    </div>
+                                </div>
+
                             </li>
 
                             <li class="nav-item">
@@ -125,7 +134,7 @@
     </header>
     <!--Landing page ends-->
     <!--Header section ends-->
-    <!--Koththu section starts-->
+
 
     @{
         var Koththu = from ko in Model where ko.FOODID == 100 select ko;
@@ -134,41 +143,39 @@
         var rice = from ri in Model where ri.FOODID == 103 select ri;
         var desert = from des in Model where des.FOODID == 104 select des;
     }
-  
 
-  
-<section class="Koththu" id="Koththu">
-    <div class="container-fluid">
-        <div class="container">
-            <h1>Koththu</h1>
-            <div class="owl-carousel owl-theme">
-                @foreach (var item in Koththu)
-                {
-                    <div class="content-area">
-                        <div class="content p-5">
-                            <div class="card text-center">
-                                <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
-                                    <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                    @*<button class="button" id="link-order">*@ @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID , style = "color:#fff;text-decoration:none" }, null) <i class="fa-solid fa-cart-plus"></i>@*</button>*@
-                                    
-                                    
-                                    
-                                <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
+
+    <!--Koththu section starts-->
+    <section class="Koththu" id="Koththu">
+        <div class="container-fluid">
+            <div class="container">
+                <h1>Koththu</h1>
+                <div class="owl-carousel owl-theme">
+                    @foreach (var item in Koththu)
+                    {
+                        <div class="content-area">
+                            <div class="content p-5">
+                                <div class="card text-center">
+                                    <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5>
+                                        <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
+                                        <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> @*@Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID })*@ Order Now  <i class="fa-solid fa-cart-plus"></i></button>
+
+                                        <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
 
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
-    
-    
+    </section>
+
+
 
     <!--Koththu section ends-->
     <!--Bakery section starts-->
@@ -184,11 +191,11 @@
                                 <div class="card text-center">
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
-                                        <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                        <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                        @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
-                                    <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
+                                        <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>                                        
+
+                                        <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
                                     </div>
                                 </div>
                             </div>
@@ -214,10 +221,10 @@
                                 <div class="card text-center">
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
-                                        <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                        <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                        @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
+                                        <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
+
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
                                 </div>
@@ -227,26 +234,26 @@
 
 
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!--Pizza section ends-->
-<!--Rice section starts-->
-<section class="rice" id="rice">
-    <div class="container-fluid">
-        <div class="container">
-            <h1>
-                @if (rice.Count() > 0)
-                {
-                    @Html.Label("Rice");
-                }
-                else
-                {
-                    @Html.Label("");
-                }
-            </h1>
-            <div class="owl-carousel owl-theme">
+    </section>
+    <!--Pizza section ends-->
+    <!--Rice section starts-->
+    <section class="rice" id="rice">
+        <div class="container-fluid">
+            <div class="container">
+                <h1>
+                    @if (rice.Count() > 0)
+                    {
+                        @Html.Label("Rice");
+                    }
+                    else
+                    {
+                        @Html.Label("");
+                    }
+                </h1>
+                <div class="owl-carousel owl-theme">
 
                     @foreach (var item in rice)
                     {
@@ -255,10 +262,10 @@
                                 <div class="card text-center">
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
-                                        <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                        <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                        @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
+                                        <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
+
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
                                 </div>
@@ -268,26 +275,26 @@
 
 
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!--Rice section ends-->
-<!--Desert section starts-->
-<section class="desert" id="desert">
-    <div class="container-fluid">
-        <div class="container">
-            <h1>
-                @if (desert.Count() > 0)
-                {
-                    @Html.Label("Deserts");
-                }
-                else
-                {
-                    @Html.Label("");
-                }
-            </h1>
-            <div class="owl-carousel owl-theme">
+    </section>
+    <!--Rice section ends-->
+    <!--Desert section starts-->
+    <section class="desert" id="desert">
+        <div class="container-fluid">
+            <div class="container">
+                <h1>
+                    @if (desert.Count() > 0)
+                    {
+                        @Html.Label("Deserts");
+                    }
+                    else
+                    {
+                        @Html.Label("");
+                    }
+                </h1>
+                <div class="owl-carousel owl-theme">
 
                     @foreach (var item in desert)
                     {
@@ -296,10 +303,10 @@
                                 <div class="card text-center">
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
-                                        <h4 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h4>
+                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                        <a href="#"><button class="button">ADD TO CART <i class="fa-solid fa-cart-plus"></i></button></a>
-                                        @Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID }, null)
+                                        <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
+
                                         <p class="qty-cart text-center" id="qty-cart">5</p>
                                     </div>
                                 </div>
@@ -318,30 +325,30 @@
     <!--Owl carousels2 cdnjs-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<!--Init owl carousel-->
-<script>
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 2,
-        nav: false,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
+    <!--Init owl carousel-->
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 2,
+            nav: false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
             }
-        }
-    })
-</script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
