@@ -45,7 +45,12 @@
                         <h1 class="offcanvas-title"></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" id="offCanvas-header"></button>
                     </div>
+
+
+                    @using (Html.BeginForm("Content", "Home", FormMethod.Get))
+                    {
                     <div class="offcanvas-body">
+
                         <ul class="navbar-nav ms-auto" id="header-navbar">
                             <li class="nav-item active">
                                 <a href="#" class="nav-link">HOME</a>
@@ -70,46 +75,43 @@
                                 <a href="#koththu" class="nav-link">ABOUT</a>
                             </li>
 
-
+                            @{ var name = (Session["user"] as USER_REGISTRATION).NAME;}
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        USER
+                                        @name.ToUpper()
                                     </a>
+                                    @*@Html.ActionLink((Session["user"] as USER_REGISTRATION).NAME, "Home", new {@class="nav-link dropdown-toggle", @id="dropdownMenu2" , @data-toggle="dropdown", aria-haspopup="true" ,aria-expanded="false"})*@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                         <button class="dropdown-item"><a href="UserUpdate" id="dropButton">DASHBOARD</a></button>
-                                        <button class="dropdown-item"><a href="/Home/Front" id="dropButton">LOGOUT</a></button>
+                                        <button class="dropdown-item"><a href="@Url.Action("Front", "Home")" id="dropButton">LOGOUT</a></button>
                                     </div>
                                 </div>
 
                             </li>
 
                             <li class="nav-item">
-                                <a href="Cart" class="nav-link">Check</a>
+                                <a href="Cart" class="nav-link"><i class="fa-solid fa-cart-plus"></i></a>
                             </li>
                         </ul>
 
 
+                        <ul class="navbar-nav ms-auto">
 
+                            <li class="nav-item">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="name" id="name" />
+                            </li>
 
+                            <li class="nav-item">
+                                <center>
+                                    <button class="btn btn-secondary mr-sm-0" type="submit" id="searchBtn">Search</button>
+                                </center>
+                            </li>
+                        </ul>
 
-                        @using (Html.BeginForm("Content", "Home", FormMethod.Get))
-                        {
-
-                            <ul class="navbar-nav ms-auto">
-
-                                <li class="nav-item">
-                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="name" id="name" />
-                                </li>
-
-                                <li class="nav-item">
-                                    <center>
-                                        <button class="btn btn-secondary mr-sm-0 " type="submit" id="searchBtn">Search</button>
-                                    </center>
-                                </li>
-                            </ul>
-                        }
                     </div>
+                    }
+
                 </div>
             </div>
         </nav>
@@ -158,11 +160,11 @@
                                 <div class="card text-center">
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5>
+                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5> 
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
-                                        <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> @*@Html.ActionLink("Order Now", "OrderNow", "Home", new { id = item.TYPEID })*@ Order Now  <i class="fa-solid fa-cart-plus"></i></button>
+                                        <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
 
-                                        <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
+                                        <p class="qty-cart text-center" id="qty-cart"></p>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +197,7 @@
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
 
-                                        <p class="qty-cart text-center" id="qty-cart">@Html.DisplayFor(modelItem => item.QUANTITY)</p>
+                                        <p class="qty-cart text-center" id="qty-cart"></p>
                                     </div>
                                 </div>
                             </div>
@@ -225,7 +227,7 @@
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
 
-                                        <p class="qty-cart text-center" id="qty-cart">5</p>
+                                        <p class="qty-cart text-center" id="qty-cart"></p>
                                     </div>
                                 </div>
                             </div>
@@ -266,7 +268,7 @@
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
 
-                                        <p class="qty-cart text-center" id="qty-cart">5</p>
+                                        <p class="qty-cart text-center" id="qty-cart"></p>
                                     </div>
                                 </div>
                             </div>
@@ -307,7 +309,7 @@
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
 
-                                        <p class="qty-cart text-center" id="qty-cart">5</p>
+                                        <p class="qty-cart text-center" id="qty-cart"></p>
                                     </div>
                                 </div>
                             </div>
