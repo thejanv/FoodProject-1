@@ -21,13 +21,16 @@ namespace FoodManagement.Controllers
         [HttpGet]
         public ActionResult AdminAdd()
         {
-            return View();
+/*            Session["skills"] = food.FOOD_ITEM.Select(x => new SelectListItem { Text = x.FOODID.ToString(), Value = x.FOODID.ToString(), Selected = x.FOODID == foodIdDropdown }).ToList();
+*/            return View();
         }
 
         // Admin add  post
         [HttpPost]
         public ActionResult AdminAdd(FOOD_TYPE product)
         {
+            
+            
             SaveImage(product);
             food.FOOD_TYPE.Add(product);
             food.SaveChanges();
@@ -138,6 +141,7 @@ namespace FoodManagement.Controllers
         //========================User View Page Starts===========================================================
         public ActionResult Front()
         {
+            
             return View();
         }
         // Adding users 
@@ -354,24 +358,24 @@ namespace FoodManagement.Controllers
                 var item = cart[i];
                 var userCart = food.ADDTOCARTs.Where(x => (x.USERID == userID) &&
                                                 (x.TYPEID == i + 1)).FirstOrDefault();
-                if (userCart != null)
+                if (userCart == null)
                 {
-                    userCart.QUANTITY = item.Quantity;
+                    food.ADDTOCARTs.Add(new ADDTOCART { USERID = userID, TYPEID = item.Type.TYPEID, NAME = item.Type.NAME, QUANTITY = item.Quantity, PRICE = item.Type.PRICE });
                 }
                 else
                 {
-
                     userCart.QUANTITY -= item.Quantity;
-                    food.ADDTOCARTs.Add(new ADDTOCART { USERID = userID, TYPEID = item.Type.TYPEID, NAME = item.Type.NAME, QUANTITY = item.Quantity, PRICE = item.Type.PRICE });
                 }
             }
             food.SaveChanges();
             return View();
         }
+
         public ActionResult Cart()
         {
             cartCall();
             return View(food.ADDTOCARTs.ToList());
         }
+        
     }
 }
