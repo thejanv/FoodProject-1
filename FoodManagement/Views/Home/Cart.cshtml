@@ -36,97 +36,100 @@
     <div class="container" id="display-food">
         <h1>Selected Food Items</h1>
 
-        <div class="table-responsive-sm">
-            <table class="table table-striped table-hover table-bordered" style="box-shadow: 0px 10px 40px -10px rgba(0,0,0,1);">
-                <thead class="thead">
-                    <tr>
-                        <th scope="col">
-                            <center>
-                                ID
-                            </center>
-                        </th>
-                        <th scope="col">
-                            <center>
-                                FOOD NAME
-                            </center>
-                        </th>
-                        <th scope="col">
-                            <center>
-                                PRICE
-                            </center>
-                        </th>
-                        <th scope="col">
-                            <center>
-                                QUANTITY
-                            </center>
-                        </th>
-                        <th scope="col">
-                            <center>
-                                SUB TOTAL
-                            </center>
-                        </th>
-                        <th scope="col">
-                            <center>
-                                OPTIONS
-                            </center>
-                        </th>
-                    </tr>
-                </thead>
-                @{
-                    double total = 0;
-                }
-
-                <tbody>
-                    @foreach (var item in (List<Item>)Session["cart"])
-                    {
-                        double subTotal = item.Quantity * item.Type.PRICE;
-                        total += subTotal;
-
+        @if (Session["cart"] != null) 
+        {
+            <div class="table-responsive-sm">
+                <table class="table table-striped table-hover table-bordered" style="box-shadow: 0px 10px 40px -10px rgba(0,0,0,1);">
+                    <thead class="thead">
                         <tr>
-                            <td scope="row">
+                            <th scope="col">
                                 <center>
-                                    @item.Type.TYPEID
+                                    ID
                                 </center>
-                            </td>
-                            <td>
+                            </th>
+                            <th scope="col">
                                 <center>
-                                    @item.Type.NAME
+                                    FOOD NAME
                                 </center>
-                            </td>
-                            <td>
+                            </th>
+                            <th scope="col">
                                 <center>
-                                    @item.Type.PRICE
+                                    PRICE
                                 </center>
-                            </td>
-                            <td>
+                            </th>
+                            <th scope="col">
                                 <center>
-                                    @item.Quantity
+                                    QUANTITY
                                 </center>
-                            </td>
-                            <td>
+                            </th>
+                            <th scope="col">
                                 <center>
-                                    Rs.@subTotal
+                                    SUB TOTAL
                                 </center>
-                            </td>
-                            <td id="btn-edit">
+                            </th>
+                            <th scope="col">
                                 <center>
-                                    <button class="btn">
-
-                                        @Html.ActionLink("Remove", "Delete", "Home", new { id = item.Type.TYPEID }, null)
-                                    </button>
-
-
+                                    OPTIONS
                                 </center>
-                            </td>
+                            </th>
                         </tr>
+                    </thead>
+                    @{
+                        double total = 0;
                     }
-                    <tr>
-                        <th colspan="4"><center>TOTAL COST</center></th>
-                        <th><center>Rs.@total</center></th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+                    <tbody>
+                        @foreach (var item in (List<Item>)Session["cart"])
+                        {
+                            double subTotal = item.Quantity * item.Type.PRICE;
+                            total += subTotal;
+
+                            <tr>
+                                <td scope="row">
+                                    <center>
+                                        @item.Type.TYPEID
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        @item.Type.NAME
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        @item.Type.PRICE
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        @item.Quantity
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        Rs.@subTotal
+                                    </center>
+                                </td>
+                                <td id="btn-edit">
+                                    <center>
+                                        <button class="btn">
+
+                                            @Html.ActionLink("Remove", "Delete", "Home", new { id = item.Type.TYPEID }, null)
+                                        </button>
+
+
+                                    </center>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <th colspan="4"><center>TOTAL COST</center></th>
+                            <th><center>Rs.@total</center></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
         <br />
         <br />
         <div id="cart" class="container">
