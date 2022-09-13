@@ -29,6 +29,15 @@
     <script src="https://kit.fontawesome.com/2243ae231d.js" crossorigin="anonymous"></script>
 
     <title>Food Train</title>
+
+    <script>
+        function DeleteConfirm() {
+            if (confirm("Are you sure want to delete record"))
+                return true;
+            else
+                return false;
+        }
+    </script>
 </head>
 <body>
     <div class="container" id="display-food">
@@ -115,14 +124,13 @@
                                         @Html.ActionLink("EDIT", "AdminUpdate", new { id = item.TYPEID })
                                     </button>
 
-                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#myModal" >
                                         @*<a href="AdminDelete">Delete</a>*@
-                                        @Html.ActionLink("DELETE", "AdminDelete", new { @id = item.TYPEID })
-                                        @*DELETE*@
+                                        @Html.ActionLink("DELETE", "AdminDelete", new { @id = item.TYPEID })                                   
                                     </button>
                                 </center>
                             </td>
-                        </tr>
+                        </tr>                    
                     }
                 </tbody>
             </table>

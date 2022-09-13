@@ -200,10 +200,10 @@ namespace FoodManagement.Controllers
 
             return View();
         }
-        
+
         public ActionResult Authenticate()
         {
-                var data = food.USER_REGISTRATION.ToList();
+            var data = food.USER_REGISTRATION.ToList();
 
 
             foreach (USER_REGISTRATION item in data)
@@ -221,7 +221,7 @@ namespace FoodManagement.Controllers
 
 
             ViewBag.msg = "Please provide correct E-Mail Id and Password";
-                    return View("Login");
+            return View("Login");
         }
         //Updating 
         public ActionResult UserUpdate()
@@ -231,7 +231,7 @@ namespace FoodManagement.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UserUpdate(USER_REGISTRATION user,string repassword)
+        public ActionResult UserUpdate(USER_REGISTRATION user, string repassword)
         {
             var id = (Session["user"] as USER_REGISTRATION).USERID;
             
@@ -308,7 +308,7 @@ namespace FoodManagement.Controllers
             var item = food.FOOD_TYPE.Find(id);
             cartCall();
 
-            
+
 
 
             if (item.QUANTITY != 0)

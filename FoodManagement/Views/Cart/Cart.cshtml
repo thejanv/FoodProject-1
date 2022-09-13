@@ -3,46 +3,40 @@
 @{
     ViewBag.Title = "Cart";
 }
-<html>
-    <head>
 
-    </head>
-    <body>
-        <h2>Cart</h2>
-        <table class="table" border="2" cellpadding="5" align="center">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Sub Total</th>
-                <th>Option</th>
-            </tr>
-            @{
-                double total = 0;
-            }
-            @foreach (var item in (List<Item>)Session["cart"])
-            {
-                double subTotal = item.Quantity * item.Type.PRICE;
-                total += subTotal;
+<h2>Cart</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+        <th>Option</th>
+    </tr>
+    @{
+        double total = 0;
+    }
+    @foreach (var item in (List<Item>)Session["cart"])
+    {
+        double subTotal = item.Quantity * item.Type.PRICE;
+        total += subTotal;
 
-                <tr>
-                    <td>@item.Type.TYPEID</td>
-                    <td>@item.Type.NAME</td>
-                    <td>@item.Type.PRICE</td>
-                    <td>@item.Quantity</td>
-                    <td>@subTotal</td>
-                    <td>@Html.ActionLink("Remove", "Delete", "Home", new { id = item.Type.TYPEID }, null)</td>
-                </tr>
-            }
-            <tr>
-                <th align="right" colspan="5">Sum</th>
-                <th>@total</th>
-            </tr>
-        </table>
-        <br />
-        <br />
-        @Html.ActionLink("Continue Shopping", "Content", "Home")
-        @Html.ActionLink("Complete to checkout", "Checkout", "Home")
-    </body>
-</html>
+        <tr>
+            <td>@item.Type.TYPEID</td>
+            <td>@item.Type.NAME</td>
+            <td>@item.Type.PRICE</td>
+            <td>@item.Quantity</td>
+            <td>@subTotal</td>
+            <td>@Html.ActionLink("Remove", "Delete", "Home", new { id = item.Type.TYPEID }, null)</td>
+        </tr>
+    }
+    <tr>
+        <th align="right" colspan="5">Sum</th>
+        <th>@total</th>
+    </tr>
+</table>
+<br />
+<br />
+@Html.ActionLink("Continue Shopping", "Content", "Home")
+@Html.ActionLink("Pay", "Checkout", "Home")
