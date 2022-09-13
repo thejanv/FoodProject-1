@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!--External CSS File-->
-    <link rel="stylesheet" href="/Content/style_content.css">
+    <link rel="stylesheet" href="~/Content/style_content.css">
 
     <!--Owl carousel2 min css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -49,94 +49,96 @@
 
                     @using (Html.BeginForm("Content", "Home", FormMethod.Get))
                     {
-                    <div class="offcanvas-body">
+                        <div class="offcanvas-body">
 
-                        <ul class="navbar-nav ms-auto" id="header-navbar">
-                            <li class="nav-item active">
-                                <a href="#" class="nav-link">HOME</a>
-                            </li>
+                            <ul class="navbar-nav ms-auto" id="header-navbar">
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link">HOME</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        FOODS
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <button class="dropdown-item"><a href="#koththu" id="dropButton">KOTHTHU</a></button>
-                                        <button class="dropdown-item"><a href="#bakery" id="dropButton">BAKERY ITEMS</a></button>
-                                        <button class="dropdown-item"><a href="#pizza" id="dropButton">PIZZA</a></button>
-                                        <button class="dropdown-item"><a href="#rice" id="dropButton">RICE</a></button>
-                                        <button class="dropdown-item"><a href="#desert" id="dropButton">DESERT</a></button>
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                                        <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            FOODS
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <button class="dropdown-item"><a href="#Koththu" id="dropButton">KOTHTHU</a></button>
+                                            <button class="dropdown-item"><a href="#bakery" id="dropButton">BAKERY ITEMS</a></button>
+                                            <button class="dropdown-item"><a href="#pizza" id="dropButton">PIZZA</a></button>
+                                            <button class="dropdown-item"><a href="#rice" id="dropButton">RICE</a></button>
+                                            <button class="dropdown-item"><a href="#desert" id="dropButton">DESERT</a></button>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
 
-                            <li class="nav-item">
-                                <a href="#koththu" class="nav-link">ABOUT</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="#koththu" class="nav-link">ABOUT</a>
+                                </li>
 
-                            @{ var name = (Session["user"] as USER_REGISTRATION).NAME;}
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        @name.ToUpper()
-                                    </a>
-                                    @*@Html.ActionLink((Session["user"] as USER_REGISTRATION).NAME, "Home", new {@class="nav-link dropdown-toggle", @id="dropdownMenu2" , @data-toggle="dropdown", aria-haspopup="true" ,aria-expanded="false"})*@
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <button class="dropdown-item"><a href="UserUpdate" id="dropButton">DASHBOARD</a></button>
-                                        <button class="dropdown-item"><a href="@Url.Action("Front", "Home")" id="dropButton">LOGOUT</a></button>
+                                @{ var name = (Session["user"] as USER_REGISTRATION).NAME;}
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                                        <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            @name.ToUpper()
+                                        </a>
+                                        @*@Html.ActionLink((Session["user"] as USER_REGISTRATION).NAME, "Home", new {@class="nav-link dropdown-toggle", @id="dropdownMenu2" , @data-toggle="dropdown", aria-haspopup="true" ,aria-expanded="false"})*@
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                            <button class="dropdown-item"><a href="UserUpdate" id="dropButton">DASHBOARD</a></button>
+                                            <button class="dropdown-item"><a href="@Url.Action("Front", "Home")" id="dropButton">LOGOUT</a></button>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </li>
+                                </li>
 
-                            <li class="nav-item">
-                                <a href="Cart" class="nav-link"><i class="fa-solid fa-cart-plus"></i></a>
-                            </li>
-                        </ul>
+                                <li class="nav-item">
+                                    <a href="Cart" class="nav-link"><i class="fa-solid fa-cart-plus"></i></a>
+                                </li>
+                            </ul>
 
 
-                        <ul class="navbar-nav ms-auto">
+                            <ul class="navbar-nav ms-auto">
 
-                            <li class="nav-item">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="name" id="name" />
-                            </li>
+                                <li class="nav-item">
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="name" id="name" />
+                                </li>
 
-                            <li class="nav-item">
-                                <center>
-                                    <button class="btn btn-secondary mr-sm-0" type="submit" id="searchBtn">Search</button>
-                                </center>
-                            </li>
-                        </ul>
+                                <li class="nav-item">
+                                    <center>
+                                        <button class="btn btn-secondary mr-sm-0" type="submit" id="searchBtn">Search</button>
+                                    </center>
+                                </li>
+                            </ul>
 
-                    </div>
+                        </div>
                     }
 
                 </div>
             </div>
         </nav>
 
-        <!--Landing page starts-->
-        <!--<section class="landing" id="landing">
-            <div class="container-fluid">
-                <div class="container my-5">
-                    <div class="row">
-                        <div class="col-md-6 text-center">
+    </header>
 
-                            <h1>Food Train</h1>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <img src="/Content/Images/landing-image.png" alt="Burger-Photo" width="80%">
-                        </div>
-
+    <!--Header section ends-->
+    <!--Landing page starts-->
+    <section class="landing" id="landing">
+        <div class="container-fluid">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-md-6 text-center landing-text">
+                        <p class="tag1"><span class="tag1-upper">S</span>uper <span class="tag1-upper">D</span>elicious <span class="tag1-upper">F</span>oods</p>
+                        <h2>Food Train</h2>
+                        <p class="tag2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum odio magnam laudantium autem provident obcaecati id sit libero.</p>
+                        <button type="button" class="btn btn-order mt-3 mb-3">Order Now</button>
+                    </div>
+                    <div class="col-md-6 text-center landing-img">
+                        <img src="~/Content/Images/landing-pic.png" alt="landing-img" " class="img-fluid" width="80%">
                     </div>
                 </div>
             </div>
-        </section>-->
-    </header>
-    <!--Landing page ends-->
-    <!--Header section ends-->
+        </div>
+    </section>
 
+    <!--Landing page ends-->
 
     @{
         var Koththu = from ko in Model where ko.FOODID == 100 select ko;
@@ -160,7 +162,7 @@
                                 <div class="card text-center">
                                     <img class="card-img-top" src="@Url.Content(item.IMGPATH)" alt="Card image cap" width="10%">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5> 
+                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.NAME)</h5>
                                         <p class="card-text text-center">Rs.@Html.DisplayFor(modelItem => item.PRICE)</p>
                                         <button class="button" id="link-order" onclick="location.href='@Url.Action("OrderNow", "Home", new { id = item.TYPEID })'"> Order Now <i class="fa-solid fa-cart-plus"></i></button>
 
@@ -323,6 +325,91 @@
     </section>
     <!--Desert section ends-->
     <!--footer section starts-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <!--Food train section starts-->
+                <div class="col-md-3">
+                    <h4>Food Train</h4>
+                    <div class="col-md-12 text-center"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Cumque itaque odio ullam unde vel incidunt temporibus deserunt minima pariatur</p></div>
+                </div>
+                <!--Food train section ends-->
+                <!--Contact us section starts-->
+                <div class="col-md-3">
+                    <h4>Contact Us</h4>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><i class="fa-solid fa-location-dot"></i>No. 40, York Street, Colombo.</div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><i class="fa fa-envelope"></i>foodtrain@gmail.com</div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><i class="fa-solid fa-square-phone"></i>+94 765-408-435 <br><i class="fa-solid fa-square-phone"></i>+94 765-408-436 </div>
+                        </div>
+                    </p>
+                </div>
+                <!--Contact us section ends-->
+                <!--Fallow us section starts-->
+                <div class="col-md-3">
+                    <h4>Follow Us</h4>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><i class="fa-brands fa-facebook"></i><a href="https://www.facebook.com" target="_blank">Facebook</a></div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><i class="fa-brands fa-twitter"></i><a href="https://www.twitter.com" target="_blank">Twitter</a></div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com" target="_blank">Instagram</a></div>
+                        </div>
+                    </p>
+                </div>
+                <!--Fallow us section ends-->
+                <!--Quick links section starts-->
+                <div class="col-md-3">
+                    <h4>Quick Links</h4>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><a href="#">Home</a></div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><a href="#about">About Us</a></div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><a href="Home\Index">Signup</a></div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="row">
+                            <div class="col-md-12 text-center"><a href="Home\Login">Login</a></div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            <!--Quick links section ends-->
+        </div>
+
+        <hr>
+        <!--Copyrigt starts-->
+        <div class="copyright">
+            <div class="col-md-12 text-center"><i class="fa-solid fa-copyright"></i>2022 - Powered by Incognito</div>
+        </div>
+        <!--Copyrigt ends-->
+    </section>
     <!--footer section ends-->
     <!--Owl carousels2 cdnjs-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

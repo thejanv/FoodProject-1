@@ -1,5 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,700&display=swap');
 @import url('http://fonts.cdnfonts.com/css/capture-it');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Pacifico&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,700&display=swap');
 @import url(//db.onlinewebfonts.com/c/c26179a6c23d2237e25a2b846421298f?family=Bafora+Demo);
 
 :root {
@@ -40,6 +41,7 @@
     color: #000;
 }
 
+
 #header-content p {
 }
 
@@ -49,7 +51,7 @@
 .navbar {
     background-color: #000;
     color: #fff;
-    margin-bottom: 5px;
+    padding-bottom:5px;
 }
 
 #header-navbar .nav-item a {
@@ -69,8 +71,9 @@
     color: #000;
     text-decoration: none;
 }
-#header-navbar .nav-item{
-    padding:5px 30px;
+
+#header-navbar .nav-item {
+    padding: 5px 10px;
 }
 
 #name {
@@ -79,7 +82,7 @@
 }
 
 #searchBtn {
-    margin-left:5px;
+    margin-left: 5px;
     margin-top: 4px;
 }
 
@@ -102,22 +105,66 @@
 
 /*=============================== Landing =================================== */
 
-/*#Landing {
-    height: 89.2vh;
+.landing {
+    height: 100vh;
+    margin-bottom: 30px;
 }
 
-    #Landing h1 {
-        font-weight: 500;
-        font-size: 5.8rem;
-        font-family: 'Capture it', sans-serif;
-        align-content: center;
-        padding-top: 30%;
-        color: #fff;
+.landing-text h2 {
+    font-weight: 500;
+    font-size: 5rem;
+    /*font-family: 'Capture it', sans-serif;*/
+    font-family: 'Pacifico', cursive;
+    padding-top: 0;
+    color: #000;
+}
+
+.landing-text .tag1 {
+    font-family: 'Cookie', cursive;
+    padding-top: 10%;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #e52d27;
+}
+
+
+.landing-text .tag1-upper {
+    font-family: 'Cookie', cursive;
+    font-size: 2.5rem;
+}
+
+.landing-text .tag2 {
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    color: #000;
+    text-align: center;
+}
+
+.landing-text .btn-order {
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 40%;
+    background-color: #b31217;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+    .landing-text .btn-order:hover {
+        background: #fff;
+        border: 2px solid;
+        color: #000;
     }
 
-    #Landing p {
-        font-family: 'Cookie', cursive;
-    }*/
+.landing-img img{
+    margin-bottom: 100px;
+}
+
 
 
 /*=============================== koththu =================================== */
@@ -134,6 +181,7 @@
 .card .card-body .card-title {
     text-transform: capitalize;
     color: #000;
+    
 }
 
 .card .card-body .card-text {
@@ -182,7 +230,7 @@
         box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
     }
 
-    
+
 
 
 /*=============================== bakery =================================== */
@@ -368,19 +416,19 @@
 }
 
 
-.modal-title{
-    font-weight:600;
+.modal-title {
+    font-weight: 600;
 }
 
-.modal-body i{
-    color:red;
-    font-size:50px;
+.modal-body i {
+    color: red;
+    font-size: 50px;
 }
 
 
-.modal-body #delete{
-    font-weight:700;
-    font-size:50px;
+.modal-body #delete {
+    font-weight: 700;
+    font-size: 50px;
 }
 
 
@@ -520,20 +568,20 @@
         color: #fff;
         border-radius: 4px;
         font-weight: bold;
-        text-decoration:none;
-        color:#fff;
+        text-decoration: none;
+        color: #fff;
     }
 
-        .delete .btn-admin:hover {
-            background: #fff;
-            border: 2px solid;
-            color: #000
-        }
+    .delete .btn-admin:hover {
+        background: #fff;
+        border: 2px solid;
+        color: #000;
+    }
 
     .delete .btn-cancel:hover {
         background: #fff;
         border: 2px solid;
-        color: #000
+        color: #000;
     }
 
     .delete .card-img {
@@ -593,7 +641,6 @@
         height: 50px;
         width: 100%;
         background-color: #000;
-        
         border-radius: 4px;
         font-weight: bold;
         text-decoration: none;
@@ -617,24 +664,23 @@
         padding-left: auto;
         margin-left: auto;
     }
-   /*============== Cart ========================================================*/
+/*============== Cart ========================================================*/
 .btn-cart {
     border: none;
     outline: none;
     height: 50px;
     width: 40%;
     background-color: blue;
-    
     border-radius: 4px;
     font-weight: bold;
     text-decoration: none;
     color: #fff;
 }
+
     .btn-cart:hover {
-        background-color:#000;
+        background-color: #000;
         border: 2px;
         color: #fff;
-        outline:solid;
-        outline-color:white;
-       
+        outline: solid;
+        outline-color: white;
     }
