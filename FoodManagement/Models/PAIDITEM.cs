@@ -12,7 +12,7 @@ namespace FoodManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ADDTOCART
+    public partial class PAIDITEM
     {
         public int ID { get; set; }
         public Nullable<int> USERID { get; set; }
@@ -21,7 +21,7 @@ namespace FoodManagement.Models
         public Nullable<int> QUANTITY { get; set; }
         public Nullable<int> PRICE { get; set; }
     
-        public virtual USER_REGISTRATION USER_REGISTRATION { get; set; }
         public virtual FOOD_TYPE FOOD_TYPE { get; set; }
+        public virtual USER_REGISTRATION USER_REGISTRATION { get; set; }
     }
 }

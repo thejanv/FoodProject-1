@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[PAIDITEMS] (
+    [ID]       INT          IDENTITY (1, 1) NOT NULL,
+    [USERID]   INT          NULL,
+    [TYPEID]   INT          NULL,
+    [NAME]     VARCHAR (20) NULL,
+    [QUANTITY] INT          NULL,
+    [PRICE]    INT          NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    FOREIGN KEY ([USERID]) REFERENCES [dbo].[USER_REGISTRATION] ([USERID]),
+    FOREIGN KEY ([TYPEID]) REFERENCES [dbo].[FOOD_TYPE] ([TYPEID])
+);
+

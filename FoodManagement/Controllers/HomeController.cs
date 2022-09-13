@@ -1,4 +1,5 @@
 ﻿using FoodManagement.Models;
+using FoodManagement.PayPal;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,16 +22,17 @@ namespace FoodManagement.Controllers
         [HttpGet]
         public ActionResult AdminAdd()
         {
-/*            Session["skills"] = food.FOOD_ITEM.Select(x => new SelectListItem { Text = x.FOODID.ToString(), Value = x.FOODID.ToString(), Selected = x.FOODID == foodIdDropdown }).ToList();
-*/            return View();
+            var foodIdList = food.FOOD_ITEM.ToList();
+            Session["foodid"] = new SelectList(foodIdList,"FOODID","NAME");
+            return View();
         }
 
         // Admin add  post
         [HttpPost]
         public ActionResult AdminAdd(FOOD_TYPE product)
         {
-            
-            
+
+
             SaveImage(product);
             food.FOOD_TYPE.Add(product);
             food.SaveChanges();
@@ -40,6 +42,8 @@ namespace FoodManagement.Controllers
         // Admin update get
         public ActionResult AdminUpdate(int id)
         {
+            var foodIdList = food.FOOD_ITEM.ToList();
+            Session["foodid"] = new SelectList(foodIdList, "FOODID", "NAME");
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
             return View(data);
         }
@@ -51,6 +55,7 @@ namespace FoodManagement.Controllers
             var data = food.FOOD_TYPE.Where(x => x.TYPEID == id).FirstOrDefault();
             if (data != null)
             {
+                data.FOODID = product.FOODID;
                 data.NAME = product.NAME;
                 data.PRICE = product.PRICE;
                 data.QUANTITY = product.QUANTITY;
@@ -114,6 +119,7 @@ namespace FoodManagement.Controllers
 
         public ActionResult Display()
         {
+            ViewData["data"] = food.PAIDITEMS.ToList();
             return View(food.FOOD_TYPE.ToList());
         }
 
@@ -141,7 +147,7 @@ namespace FoodManagement.Controllers
         //========================User View Page Starts===========================================================
         public ActionResult Front()
         {
-            
+            Session.Clear();
             return View();
         }
         // Adding users 
@@ -360,7 +366,7 @@ namespace FoodManagement.Controllers
                                                 (x.TYPEID == i + 1)).FirstOrDefault();
                 if (userCart == null)
                 {
-                    food.ADDTOCARTs.Add(new ADDTOCART { USERID = userID, TYPEID = item.Type.TYPEID, NAME = item.Type.NAME, QUANTITY = item.Quantity, PRICE = item.Type.PRICE });
+                    food.ADDTOCARTs.Add(new ADDTOCART { USERID = userID, TYPEID = item.Type.TYPEID, NAME = item.Type.NAME, QUANTITY = item.Quantity, PRICE = (item.Type.PRICE*item.Quantity)});
                 }
                 else
                 {
@@ -376,6 +382,40 @@ namespace FoodManagement.Controllers
             cartCall();
             return View(food.ADDTOCARTs.ToList());
         }
-        
+        //============= PAY PAL VERIFICATION =======================================
+
+        public ActionResult PayPal()
+        {
+            return View();
+        }
+        public ActionResult Success()
+        {
+           
+                List<Item> cart = (List<Item>)Session["cart"];
+                var userID = ((Session["user"] as USER_REGISTRATION).USERID);
+                foreach (var item in cart)
+                {
+                    food.PAIDITEMS.Add(new PAIDITEM { USERID = userID, TYPEID = item.Type.TYPEID, NAME = item.Type.NAME, QUANTITY = item.Quantity, PRICE = (item.Type.PRICE * item.Quantity) });
+                }
+
+                /*var count = from i in FOOD_TYPE where i*/
+
+                int foodCount = food.FOOD_TYPE.Count();
+                for (var i = 1; i <= foodCount; i++)
+                {
+                    var userCart = food.ADDTOCARTs.Where(x => (x.USERID == userID) &&
+                                                 (x.TYPEID == i)).FirstOrDefault();
+                    if (userCart != null)
+                    {
+                        food.ADDTOCARTs.Remove(userCart);
+                    }
+                }
+                food.SaveChanges();
+                Session["cart"] = null;
+            
+            /*ViewBag.result = PDTHolder.Success(Request.QueryString.Get("tx"));*/
+            return View("Success");
+        }
+
     }
 }

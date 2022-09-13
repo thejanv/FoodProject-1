@@ -64,14 +64,14 @@
                                 <div class="col-md-7 ">
                                     @*<input type="text" class="form-control my-3 p-2" placeholder="Enter food ID">*@
                                     @*<select name="cars" id="cars" class="form-control my-3 p-2">
-               <option value="volvo">Volvo</option>
-               <option value="saab">Saab</option>
-               <option value="mercedes">Mercedes</option>
-               <option value="audi">Audi</option>
-            </select>*@
-
-                                    @Html.EditorFor(model => model.FOODID, new { htmlAttributes = new { @class = "form-control my-3 p-2" } })
-                                    @Html.ValidationMessageFor(model => model.FOODID, "", new { @class = "text-danger" })
+           <option value="volvo">Volvo</option>
+           <option value="saab">Saab</option>
+           <option value="mercedes">Mercedes</option>
+           <option value="audi">Audi</option>
+        </select>*@
+                                    @Html.DropDownListFor(m => m.FOODID, Session["foodid"] as SelectList, "Select Food Type", new { @id = "foodIdDropdown", @class = "form-control my-3 p-2" })
+@*                                    @Html.EditorFor(model => model.FOODID, new { htmlAttributes = new { @class = "form-control my-3 p-2" } })
+*@                                    @Html.ValidationMessageFor(model => model.FOODID, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-md-7">
                                     @*<input type="text" class="form-control my-3 p-2" placeholder="Enter food name">*@

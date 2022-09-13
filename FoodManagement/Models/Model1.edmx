@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FoodManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FoodManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ADDTOCART">
           <Key>
             <PropertyRef Name="ID" />
@@ -34,6 +34,17 @@
           <Property Name="QUANTITY" Type="int" Nullable="false" />
           <Property Name="IMGPATH" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="PAIDITEMS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERID" Type="int" />
+          <Property Name="TYPEID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="PRICE" Type="int" />
+        </EntityType>
         <EntityType Name="USER_REGISTRATION">
           <Key>
             <PropertyRef Name="USERID" />
@@ -57,7 +68,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ADDTOCART__TYPEI__36B12243">
+        <Association Name="FK__ADDTOCART__TYPEI__2E1BDC42">
           <End Role="FOOD_TYPE" Type="Self.FOOD_TYPE" Multiplicity="0..1" />
           <End Role="ADDTOCART" Type="Self.ADDTOCART" Multiplicity="*" />
           <ReferentialConstraint>
@@ -69,7 +80,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FOOD_TYPE__FOODI__37A5467C">
+        <Association Name="FK__FOOD_TYPE__FOODI__2A4B4B5E">
           <End Role="FOOD_ITEM" Type="Self.FOOD_ITEM" Multiplicity="0..1" />
           <End Role="FOOD_TYPE" Type="Self.FOOD_TYPE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -81,26 +92,58 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PAIDITEMS__TYPEI__37A5467C">
+          <End Role="FOOD_TYPE" Type="Self.FOOD_TYPE" Multiplicity="0..1" />
+          <End Role="PAIDITEMS" Type="Self.PAIDITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOOD_TYPE">
+              <PropertyRef Name="TYPEID" />
+            </Principal>
+            <Dependent Role="PAIDITEMS">
+              <PropertyRef Name="TYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAIDITEMS__USERI__36B12243">
+          <End Role="USER_REGISTRATION" Type="Self.USER_REGISTRATION" Multiplicity="0..1" />
+          <End Role="PAIDITEMS" Type="Self.PAIDITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_REGISTRATION">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="PAIDITEMS">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FoodManagementModelStoreContainer">
           <EntitySet Name="ADDTOCART" EntityType="Self.ADDTOCART" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FOOD_ITEM" EntityType="Self.FOOD_ITEM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FOOD_TYPE" EntityType="Self.FOOD_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAIDITEMS" EntityType="Self.PAIDITEMS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER_REGISTRATION" EntityType="Self.USER_REGISTRATION" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__ADDTOCART__PRICE__2D27B809" Association="Self.FK__ADDTOCART__PRICE__2D27B809">
             <End Role="USER_REGISTRATION" EntitySet="USER_REGISTRATION" />
             <End Role="ADDTOCART" EntitySet="ADDTOCART" />
           </AssociationSet>
-          <AssociationSet Name="FK__ADDTOCART__TYPEI__36B12243" Association="Self.FK__ADDTOCART__TYPEI__36B12243">
+          <AssociationSet Name="FK__ADDTOCART__TYPEI__2E1BDC42" Association="Self.FK__ADDTOCART__TYPEI__2E1BDC42">
             <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
             <End Role="ADDTOCART" EntitySet="ADDTOCART" />
           </AssociationSet>
-          <AssociationSet Name="FK__FOOD_TYPE__FOODI__37A5467C" Association="Self.FK__FOOD_TYPE__FOODI__37A5467C">
+          <AssociationSet Name="FK__FOOD_TYPE__FOODI__2A4B4B5E" Association="Self.FK__FOOD_TYPE__FOODI__2A4B4B5E">
             <End Role="FOOD_ITEM" EntitySet="FOOD_ITEM" />
             <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
           </AssociationSet>
+          <AssociationSet Name="FK__PAIDITEMS__TYPEI__37A5467C" Association="Self.FK__PAIDITEMS__TYPEI__37A5467C">
+            <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
+            <End Role="PAIDITEMS" EntitySet="PAIDITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAIDITEMS__USERI__36B12243" Association="Self.FK__PAIDITEMS__USERI__36B12243">
+            <End Role="USER_REGISTRATION" EntitySet="USER_REGISTRATION" />
+            <End Role="PAIDITEMS" EntitySet="PAIDITEMS" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FoodManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -137,6 +180,7 @@
           <Property Name="IMGPATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ADDTOCARTs" Relationship="Self.FK__ADDTOCART__TYPEI__36B12243" FromRole="FOOD_TYPE" ToRole="ADDTOCART" />
           <NavigationProperty Name="FOOD_ITEM" Relationship="Self.FK__FOOD_TYPE__FOODI__37A5467C" FromRole="FOOD_TYPE" ToRole="FOOD_ITEM" />
+          <NavigationProperty Name="PAIDITEMS" Relationship="FoodManagementModel.FK__PAIDITEMS__TYPEI__37A5467C" FromRole="FOOD_TYPE" ToRole="PAIDITEM" />
         </EntityType>
         <EntityType Name="USER_REGISTRATION">
           <Key>
@@ -149,6 +193,7 @@
           <Property Name="PASSWORD" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ADDRESS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ADDTOCARTs" Relationship="Self.FK__ADDTOCART__PRICE__2D27B809" FromRole="USER_REGISTRATION" ToRole="ADDTOCART" />
+          <NavigationProperty Name="PAIDITEMS" Relationship="FoodManagementModel.FK__PAIDITEMS__USERI__36B12243" FromRole="USER_REGISTRATION" ToRole="PAIDITEM" />
         </EntityType>
         <Association Name="FK__ADDTOCART__PRICE__2D27B809">
           <End Role="USER_REGISTRATION" Type="Self.USER_REGISTRATION" Multiplicity="0..1" />
@@ -203,7 +248,53 @@
             <End Role="FOOD_ITEM" EntitySet="FOOD_ITEM" />
             <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
           </AssociationSet>
+          <EntitySet Name="PAIDITEMS" EntityType="FoodManagementModel.PAIDITEM" />
+          <AssociationSet Name="FK__PAIDITEMS__TYPEI__37A5467C" Association="FoodManagementModel.FK__PAIDITEMS__TYPEI__37A5467C">
+            <End Role="FOOD_TYPE" EntitySet="FOOD_TYPE" />
+            <End Role="PAIDITEM" EntitySet="PAIDITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAIDITEMS__USERI__36B12243" Association="FoodManagementModel.FK__PAIDITEMS__USERI__36B12243">
+            <End Role="USER_REGISTRATION" EntitySet="USER_REGISTRATION" />
+            <End Role="PAIDITEM" EntitySet="PAIDITEMS" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="PAIDITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="Int32" />
+          <Property Name="TYPEID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="PRICE" Type="Int32" />
+          <NavigationProperty Name="FOOD_TYPE" Relationship="FoodManagementModel.FK__PAIDITEMS__TYPEI__37A5467C" FromRole="PAIDITEM" ToRole="FOOD_TYPE" />
+          <NavigationProperty Name="USER_REGISTRATION" Relationship="FoodManagementModel.FK__PAIDITEMS__USERI__36B12243" FromRole="PAIDITEM" ToRole="USER_REGISTRATION" />
+        </EntityType>
+        <Association Name="FK__PAIDITEMS__TYPEI__37A5467C">
+          <End Type="FoodManagementModel.FOOD_TYPE" Role="FOOD_TYPE" Multiplicity="0..1" />
+          <End Type="FoodManagementModel.PAIDITEM" Role="PAIDITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOOD_TYPE">
+              <PropertyRef Name="TYPEID" />
+            </Principal>
+            <Dependent Role="PAIDITEM">
+              <PropertyRef Name="TYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAIDITEMS__USERI__36B12243">
+          <End Type="FoodManagementModel.USER_REGISTRATION" Role="USER_REGISTRATION" Multiplicity="0..1" />
+          <End Type="FoodManagementModel.PAIDITEM" Role="PAIDITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_REGISTRATION">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="PAIDITEM">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -251,6 +342,18 @@
                 <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAIDITEMS">
+            <EntityTypeMapping TypeName="FoodManagementModel.PAIDITEM">
+              <MappingFragment StoreEntitySet="PAIDITEMS">
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
