@@ -101,13 +101,8 @@
     <Content Include="Content\Images\admin-edit.jpg" />
     <Content Include="Content\Images\admin-login.jpg" />
     <Content Include="Content\Images\bg.jpg" />
-    <Content Include="Content\Images\burger.jpg" />
-    <Content Include="Content\Images\chicken-koththu.jpg" />
-    <Content Include="Content\Images\Content_Landing_bg.jpg" />
-    <Content Include="Content\Images\display-bg.png" />
-    <Content Include="Content\Images\Egg koththu.jpg" />
+    <Content Include="Content\Images\FOOD TRAIN.png" />
     <Content Include="Content\Images\food.png" />
-    <Content Include="Content\Images\Fried_rice.jpg" />
     <Content Include="Content\Images\IMG-20220903-WA0008.jpg" />
     <Content Include="Content\Images\IMG-20220903-WA0011.jpg" />
     <Content Include="Content\Images\IMG-20220903-WA0013.jpg" />
@@ -122,10 +117,7 @@
     <Content Include="Content\Images\IMG-20220903-WA0027.jpg" />
     <Content Include="Content\Images\landing-pic.png" />
     <Content Include="Content\Images\Logo.png" />
-    <Content Include="Content\Images\pasta-gcc6f3419c_1920.jpg" />
     <Content Include="Content\Images\restaurant.jpg" />
-    <Content Include="Content\Images\spaghetti-g1b35e9a65_1920.jpg" />
-    <Content Include="Content\Images\vegetables-g2ab59e7f8_1920.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style_content.css" />
