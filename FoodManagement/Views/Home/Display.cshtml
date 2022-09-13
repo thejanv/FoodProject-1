@@ -216,6 +216,7 @@
                                 Sub Total
                             </center>
                         </th>
+                        <th>Options</th>
                     </tr>
                 </thead>
 
@@ -252,6 +253,15 @@
                                 <center>
                                     @Html.DisplayFor(modelItem => item.PRICE)
                                 </center>
+                            </td>
+                            <td id="btn-edit">
+                                <center>
+                                    <button class="btn">
+                                        
+                                        @Html.ActionLink("Remove", "PaidItemDelete", new { id = item.TYPEID })
+                                    </button>
+                                </center>
+                             
                             </td>
                         </tr>
                     }

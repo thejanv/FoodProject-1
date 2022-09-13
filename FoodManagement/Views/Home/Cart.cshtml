@@ -139,6 +139,7 @@
                         <button type="button" class="btn btn-cart mt-3 mb-3" onclick="location.href='@Url.Action("Content","Home")'">Continue Shopping</button>
                     </center>
                 </div>
+
                 <div class="col-md-6">
                     <center>
                         <form method="post" action="@ConfigurationManager.AppSettings["PayPalSubmitUrl"]">
@@ -167,8 +168,13 @@
 
                             <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
                         </form>
-                        <button type="button" class="btn btn-cart mt-3 mb-3" onclick="location.href='@Url.Action("Checkout","Home")'">Proceed !</button>
-                        
+
+
+                    </center>
+                </div>
+                <div class="col-md-6">
+                    <center>
+                        <button type="button" class="btn btn-cart mt-3 mb-3" onclick="location.href='@Url.Action("Checkout","Home")'">Save to Cart !</button>
                     </center>
                 </div>
             </div>

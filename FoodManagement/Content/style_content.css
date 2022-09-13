@@ -105,9 +105,8 @@
 
 /*=============================== Landing =================================== */
 
-.landing {
-    height: 100vh;
-    margin-bottom: 30px;
+#Landing {
+    height: 89.2vh;
 }
 
 .landing-text h2 {
@@ -155,15 +154,9 @@
     color: #fff;
 }
 
-    .landing-text .btn-order:hover {
-        background: #fff;
-        border: 2px solid;
-        color: #000;
+    #Landing p {
+        font-family: 'Cookie', cursive;
     }
-
-.landing-img img{
-    margin-bottom: 100px;
-}
 
 
 

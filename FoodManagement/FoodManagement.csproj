@@ -211,6 +211,7 @@
     <Content Include="Views\Home\UserUpdate.cshtml" />
     <Content Include="Views\Home\PayPal.cshtml" />
     <Content Include="Views\Home\Success.cshtml" />
+    <Content Include="Views\Home\PaidItemDelete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
