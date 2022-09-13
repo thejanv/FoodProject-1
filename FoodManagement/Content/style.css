@@ -1,5 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/capture-it');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Pacifico&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,900;1,700&display=swap');
 :root {
     --lightRed: #e52d27;
     --darkRed: #b31217;
@@ -58,12 +60,19 @@
     text-transform: capitalize;
     padding-top: 28vh;
     font-size: 4.5rem;
-    font-weight: 750;
-    letter-spacing: 10px;
-    word-spacing: 20px;
+    /*letter-spacing: 10px;*/
+    /*word-spacing: 20px;*/
+
+    font-weight: 500;
+    font-size: 6rem;
+    
+    font-family: 'Pacifico', cursive;
+    
+    color: #ffffff;
 }
 
 #header-front p {
+    
     text-transform: capitalize;
     font-size: 25px;
 }
