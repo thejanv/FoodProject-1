@@ -29,5 +29,6 @@ namespace FoodManagement.Models
         public virtual DbSet<FOOD_ITEM> FOOD_ITEM { get; set; }
         public virtual DbSet<FOOD_TYPE> FOOD_TYPE { get; set; }
         public virtual DbSet<USER_REGISTRATION> USER_REGISTRATION { get; set; }
+        public virtual DbSet<PAIDITEM> PAIDITEMS { get; set; }
     }
 }

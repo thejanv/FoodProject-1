@@ -1,5 +1,5 @@
 ﻿@using FoodManagement.Controllers;
-
+@using System.Configuration
 @{
     ViewBag.Title = "Cart";
 }
@@ -36,7 +36,7 @@
     <div class="container" id="display-food">
         <h1>Selected Food Items</h1>
 
-        @if (Session["cart"] != null) 
+        @if (Session["cart"] != null)
         {
             <div class="table-responsive-sm">
                 <table class="table table-striped table-hover table-bordered" style="box-shadow: 0px 10px 40px -10px rgba(0,0,0,1);">
@@ -141,13 +141,40 @@
                 </div>
                 <div class="col-md-6">
                     <center>
+                        <form method="post" action="@ConfigurationManager.AppSettings["PayPalSubmitUrl"]">
+                            <input type="hidden" name="upload" value="1" />
+                            <input type="hidden" name="return" value="@ConfigurationManager.AppSettings["returnurl"]" />
+                            <input type="hidden" name="cmd" value="_cart" />
+                            <input type="hidden" name="business" value="@ConfigurationManager.AppSettings["PayPalUsername"]" />
+
+                            <!-- Product 1 -->
+                            <input type="hidden" name="item_name_1" value="Product 1" />
+                            <input type="hidden" name="item_number_1" value="P1" />
+                            <input type="hidden" name="amount_1" value="2" />
+                            <input type="hidden" name="quantity_1" value="3" />
+
+                            <!-- Product 2 -->
+                            <input type="hidden" name="item_name_2" value="Product 2" />
+                            <input type="hidden" name="item_number_2" value="P2" />
+                            <input type="hidden" name="amount_2" value="3" />
+                            <input type="hidden" name="quantity_2" value="4" />
+
+                            <!-- Product 3 -->
+                            <input type="hidden" name="item_name_3" value="Product 3" />
+                            <input type="hidden" name="item_number_3" value="P3" />
+                            <input type="hidden" name="amount_3" value="3" />
+                            <input type="hidden" name="quantity_3" value="2" />
+
+                            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
+                        </form>
                         <button type="button" class="btn btn-cart mt-3 mb-3" onclick="location.href='@Url.Action("Checkout","Home")'">Proceed !</button>
+                        
                     </center>
                 </div>
             </div>
         </div>
-        
-       
+
+
 
 
     </div>

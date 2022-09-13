@@ -8,10 +8,13 @@
         <EntityTypeShape EntityType="FoodManagementModel.ADDTOCART" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodManagementModel.FOOD_ITEM" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodManagementModel.FOOD_TYPE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodManagementModel.USER_REGISTRATION" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodManagementModel.USER_REGISTRATION" Width="1.5" PointX="3.125" PointY="4.375" IsExpanded="true" />
         <AssociationConnector Association="FoodManagementModel.FK__ADDTOCART__PRICE__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="FoodManagementModel.FK__ADDTOCART__TYPEI__36B12243" ManuallyRouted="false" />
         <AssociationConnector Association="FoodManagementModel.FK__FOOD_TYPE__FOODI__37A5467C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FoodManagementModel.PAIDITEM" Width="1.5" PointX="7.625" PointY="2.5" />
+        <AssociationConnector Association="FoodManagementModel.FK__PAIDITEMS__TYPEI__37A5467C" />
+        <AssociationConnector Association="FoodManagementModel.FK__PAIDITEMS__USERI__36B12243" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
