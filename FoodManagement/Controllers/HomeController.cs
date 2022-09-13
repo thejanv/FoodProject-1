@@ -414,7 +414,7 @@ namespace FoodManagement.Controllers
                 Session["cart"] = null;
             
             /*ViewBag.result = PDTHolder.Success(Request.QueryString.Get("tx"));*/
-            return View("Success");
+            return RedirectToAction("Content");
         }
 
     }
