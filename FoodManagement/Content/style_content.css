@@ -313,6 +313,53 @@
 
 
 
+/*=============================== about =================================== */
+
+
+.about {
+    height: 100vh;
+    padding: 50px 0;
+}
+
+    .about h1 {
+        text-align: center;
+        font-weight: 700;
+    }
+
+#about .col-md-6 {
+    padding: 20px;
+    justify-content: left;
+}
+
+
+
+/*=============================== map =================================== */
+
+
+.map{
+    height:100vh;
+    overflow-y:hidden;
+}
+
+.map h2{
+    text-transform:uppercase;
+    text-align:center;
+    font-weight:700;
+    margin:20px;
+}
+
+
+    .map container {
+        margin:30px;
+        margin-bottom:50px;
+    }
+
+    .map iframe {
+        box-shadow: 12px 12px 22px grey;
+    }
+
+
+
 /*=============================== Footer =================================== */
 
 .footer {
