@@ -1,8 +1,9 @@
-﻿
+﻿@using FoodManagement.Controllers;
+
 @{
     Layout = null;
 }
-@using System.Configuration 
+@using System.Configuration
 
 <!DOCTYPE html>
 
@@ -18,23 +19,34 @@
         <input type="hidden" name="cmd" value="_cart" />
         <input type="hidden" name="business" value="@ConfigurationManager.AppSettings["PayPalUsername"]" />
 
-        <!-- Product 1 -->
+
+      @*  @{ int count = 1;}
+        @foreach (var item in (List<Item>)Session["cart"])
+        {
+            <input type="hidden" name="item_name_@count" value=@item.Type.NAME />
+            <input type="hidden" name="item_number_@count" value=@item.Type.TYPEID />
+            <input type="hidden" name="amount_@count" value=@item.Type.PRICE />
+            <input type="hidden" name="quantity_@count" value=@item.Quantity />
+            { count++;}
+
+        }*@
+         Product 1 
         <input type="hidden" name="item_name_1" value="Product 1" />
         <input type="hidden" name="item_number_1" value="P1" />
-        <input type="hidden" name="amount_1" value="2" />
-        <input type="hidden" name="quantity_1" value="3" />
+        <input type="hidden" name="amount_1" value="10" />
+        <input type="hidden" name="quantity_1" value="5" />
 
-        <!-- Product 2 -->
+         Product 2 
         <input type="hidden" name="item_name_2" value="Product 2" />
         <input type="hidden" name="item_number_2" value="P2" />
-        <input type="hidden" name="amount_2" value="3" />
-        <input type="hidden" name="quantity_2" value="4" />
+        <input type="hidden" name="amount_2" value="10" />
+        <input type="hidden" name="quantity_2" value="5" />
 
-        <!-- Product 3 -->
+         Product 3 
         <input type="hidden" name="item_name_3" value="Product 3" />
         <input type="hidden" name="item_number_3" value="P3" />
-        <input type="hidden" name="amount_3" value="3" />
-        <input type="hidden" name="quantity_3" value="2" />
+        <input type="hidden" name="amount_3" value="10" />
+        <input type="hidden" name="quantity_3" value="5" />
 
         <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
     </form>

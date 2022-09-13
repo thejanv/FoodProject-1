@@ -97,7 +97,7 @@
                             </td>
                             <td>
                                 <center>
-                                    @Html.DisplayFor(modelItem => item.PRICE)
+                                    <span style="color:red">Rs.</span>@Html.DisplayFor(modelItem => item.PRICE)
                                 </center>
                             </td>
                             <td>
@@ -198,6 +198,11 @@
                         </th>
                         <th scope="col">
                             <center>
+                                User Name
+                            </center>
+                        </th>
+                        <th scope="col">
+                            <center>
                                 Type ID
                             </center>
                         </th>
@@ -236,6 +241,11 @@
                             </td>
                             <td>
                                 <center>
+                                    @Html.DisplayFor(modelItem => item.USER_REGISTRATION.NAME)
+                                </center>
+                            </td>
+                            <td>
+                                <center>
                                     @Html.DisplayFor(modelItem => item.TYPEID)
                                 </center>
                             </td>
@@ -251,17 +261,17 @@
                             </td>
                             <td>
                                 <center>
-                                    @Html.DisplayFor(modelItem => item.PRICE)
+                                    <span style="color:red">Rs.</span>@Html.DisplayFor(modelItem => item.PRICE)
                                 </center>
                             </td>
                             <td id="btn-edit">
                                 <center>
                                     <button class="btn">
-                                        
+
                                         @Html.ActionLink("Remove", "PaidItemDelete", new { id = item.TYPEID })
                                     </button>
                                 </center>
-                             
+
                             </td>
                         </tr>
                     }
