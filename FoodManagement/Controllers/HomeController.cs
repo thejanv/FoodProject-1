@@ -305,7 +305,7 @@ namespace FoodManagement.Controllers
 
         public ActionResult OrderNow(int id)
         {
-            var item = food.FOOD_TYPE.Find(id);
+            var item = food.FOOD_TYPE.Where(m => m.TYPEID == id).FirstOrDefault();
             cartCall();
 
 
@@ -374,7 +374,7 @@ namespace FoodManagement.Controllers
                 }
             }
             food.SaveChanges();
-            return View();
+            return RedirectToAction("Content");
         }
 
         public ActionResult Cart()
