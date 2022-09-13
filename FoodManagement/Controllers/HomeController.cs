@@ -398,23 +398,44 @@ namespace FoodManagement.Controllers
                     food.PAIDITEMS.Add(new PAIDITEM { USERID = userID, TYPEID = item.Type.TYPEID, NAME = item.Type.NAME, QUANTITY = item.Quantity, PRICE = (item.Type.PRICE * item.Quantity) });
                 }
 
-                /*var count = from i in FOOD_TYPE where i*/
+            /*var count = from i in FOOD_TYPE where i*/
 
-                int foodCount = food.FOOD_TYPE.Count();
-                for (var i = 1; i <= foodCount; i++)
+            foreach (var item in cart)
+            {
+                var userCart = food.ADDTOCARTs.Where(x => (x.USERID == userID) &&
+                                             (x.TYPEID == item.Type.TYPEID)).FirstOrDefault();
+                if (userCart != null)
                 {
-                    var userCart = food.ADDTOCARTs.Where(x => (x.USERID == userID) &&
-                                                 (x.TYPEID == i)).FirstOrDefault();
-                    if (userCart != null)
-                    {
-                        food.ADDTOCARTs.Remove(userCart);
-                    }
+                    food.ADDTOCARTs.Remove(userCart);
                 }
-                food.SaveChanges();
+            }
+            food.SaveChanges();
                 Session["cart"] = null;
-            
+
             /*ViewBag.result = PDTHolder.Success(Request.QueryString.Get("tx"));*/
-            return View("Success");
+            return RedirectToAction("Content");
+        }
+
+        public ActionResult PaidItemDelete(int? id)
+        {
+            var data = food.PAIDITEMS.Where(x => x.TYPEID == id).FirstOrDefault();
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+            return View(data);
+        }
+
+        // Detele Post
+        [HttpPost, ActionName("PaidItemDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult PaidItemDelete(int id)
+        {
+            var data = food.PAIDITEMS.Where(x => x.TYPEID == id).FirstOrDefault();
+            
+            food.PAIDITEMS.Remove(data);
+            food.SaveChanges();
+            return RedirectToAction("Display");
         }
 
     }
