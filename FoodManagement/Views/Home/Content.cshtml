@@ -72,7 +72,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#koththu" class="nav-link">ABOUT</a>
+                                    <a href="#about" class="nav-link">ABOUT</a>
                                 </li>
 
                                 @{ var name = (Session["user"] as USER_REGISTRATION).NAME;}
@@ -118,8 +118,6 @@
 
     </header>
     <!--Landing page ends-->
-
-
     <!--Landing page starts-->
     <section class="landing" id="landing">
         <div class="container-fluid">
@@ -325,93 +323,128 @@
         </div>
     </section>
     <!--Desert section ends-->
-    <!--footer section starts-->
+    <!--Google map starts-->
+    <section class="map" id="map">
+        <div class="container-fluid">
+            <h2>location</h2>
+            <div class="container">
+                <center>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.6160273015776!2d79.84270761374366!3d6.93641062015216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259269a67d6c5%3A0x5db8482fefa708ec!2s40%20York%20St%2C%20Colombo%2000100!5e0!3m2!1sen!2slk!4v1663071132157!5m2!1sen!2slk" width="900" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </center>
+            </div>
+        </div>
+    </section>
+    <!--Google map ends-->
 
-    <section class="footer">
-        <div class="container">
+    <!--about section starts-->
+    <section class="about" id="about">
+        <h1>About Us</h1>
+        <div class="container my-5">
             <div class="row">
-                <!--Food train section starts-->
-                <div class="col-md-3">
-                    <h4>Food Train</h4>
-                    <div class="col-md-12 text-center"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Cumque itaque odio ullam unde vel incidunt temporibus deserunt minima pariatur</p></div>
-                </div>
-                <!--Food train section ends-->
-                <!--Contact us section starts-->
-                <div class="col-md-3">
-                    <h4>Contact Us</h4>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><i class="fa-solid fa-location-dot"></i>No. 40, York Street, Colombo.</div>
-                        </div>
-                    </p>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><i class="fa fa-envelope"></i>foodtrain@gmail.com</div>
-                        </div>
-                    </p>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><i class="fa-solid fa-square-phone"></i>+94 765-408-435 <br><i class="fa-solid fa-square-phone"></i>+94 765-408-436 </div>
-                        </div>
-                    </p>
-                </div>
-                <!--Contact us section ends-->
-                <!--Fallow us section starts-->
-                <div class="col-md-3">
-                    <h4>Follow Us</h4>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><i class="fa-brands fa-facebook"></i><a href="https://www.facebook.com" target="_blank">Facebook</a></div>
-                        </div>
-                    </p>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><i class="fa-brands fa-twitter"></i><a href="https://www.twitter.com" target="_blank">Twitter</a></div>
-                        </div>
-                    </p>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com" target="_blank">Instagram</a></div>
-                        </div>
-                    </p>
-                </div>
-                <!--Fallow us section ends-->
-                <!--Quick links section starts-->
-                <div class="col-md-3">
-                    <h4>Quick Links</h4>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><a href="#">Home</a></div>
-                        </div>
-                    </p>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><a href="#about">About Us</a></div>
-                        </div>
-                    </p>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><a href="Home\Index">Signup</a></div>
-                        </div>
-                    </p>
-                    <p>
-                        <div class="row">
-                            <div class="col-md-12 text-center"><a href="Home\Login">Login</a></div>
-                        </div>
-                    </p>
+                <div class="col-md-6 text-center"><img src="/Content/Images/restaurant.jpg" alt="restaurant" width="240"></div> <!--about image-->
+                <div class="col-md-6 text-right">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque itaque odio ullam unde vel incidunt temporibus deserunt minima pariatur. Voluptatibus debitis amet illum officiis distinctio temporibus, quisquam dolorem! Repellendus, voluptas.</p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum optio fuga aliquid dignissimos culpa expedita perferendis, vel pariatur voluptate ipsa veniam nostrum possimus quia, earum ea id sint voluptatibus deleniti?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam est at, praesentium sequi dolor laborum rem nisi suscipit non ex harum excepturi ipsa earum dolorum provident libero. Hic, optio deserunt?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ad officia, iure veritatis blanditiis esse, est nisi quis quidem aut sapiente, unde possimus nesciunt atque sunt? Eveniet consectetur saepe minima.</p>
+
                 </div>
             </div>
-            <!--Quick links section ends-->
         </div>
 
-        <hr>
-        <!--Copyrigt starts-->
-        <div class="copyright">
-            <div class="col-md-12 text-center"><i class="fa-solid fa-copyright"></i>2022 - Powered by Incognito</div>
-        </div>
-        <!--Copyrigt ends-->
+        <!--footer section starts-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <!--Food train section starts-->
+                    <div class="col-md-3">
+                        <h4>Food Train</h4>
+                        <div class="col-md-12 text-center"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Cumque itaque odio ullam unde vel incidunt temporibus deserunt minima pariatur</p></div>
+                    </div>
+                    <!--Food train section ends-->
+                    <!--Contact us section starts-->
+                    <div class="col-md-3">
+                        <h4>Contact Us</h4>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><i class="fa-solid fa-location-dot"></i>No. 40, York Street, Colombo.</div>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><i class="fa fa-envelope"></i>foodtrain@gmail.com</div>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><i class="fa-solid fa-square-phone"></i>+94 765-408-435 <br><i class="fa-solid fa-square-phone"></i>+94 765-408-436 </div>
+                            </div>
+                        </p>
+                    </div>
+                    <!--Contact us section ends-->
+                    <!--Fallow us section starts-->
+                    <div class="col-md-3">
+                        <h4>Follow Us</h4>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><i class="fa-brands fa-facebook"></i><a href="https://www.facebook.com" target="_blank">Facebook</a></div>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><i class="fa-brands fa-twitter"></i><a href="https://www.twitter.com" target="_blank">Twitter</a></div>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com" target="_blank">Instagram</a></div>
+                            </div>
+                        </p>
+                    </div>
+                    <!--Fallow us section ends-->
+                    <!--Quick links section starts-->
+                    <div class="col-md-3">
+                        <h4>Quick Links</h4>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><a href="#">Home</a></div>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><a href="#Koththu">Foods</a></div>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><a href="#about">About Us</a></div>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="row">
+                                <div class="col-md-12 text-center"><a href="#map">Location</a></div>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+                <!--Quick links section ends-->
+            </div>
+
+            <hr>
+            <!--Copyrigt starts-->
+            <div class="copyright">
+                <div class="col-md-12 text-center"><i class="fa-solid fa-copyright"></i>2022 - Powered by Incognito</div>
+            </div>
+            <!--Copyrigt ends-->
+        </section>
+        <!--footer section ends-->
+
     </section>
-    <!--footer section ends-->
+    <!--about section ends-->
+
+
+    
     <!--Owl carousels2 cdnjs-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
