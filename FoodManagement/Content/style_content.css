@@ -715,8 +715,8 @@
     border: none;
     outline: none;
     height: 50px;
-    width: 40%;
-    background-color: blue;
+    width: 60%;
+    background-color: #000;
     border-radius: 4px;
     font-weight: bold;
     text-decoration: none;
@@ -724,9 +724,13 @@
 }
 
     .btn-cart:hover {
-        background-color: #000;
+        background-color: #b31217;
         border: 2px;
         color: #fff;
         outline: solid;
         outline-color: white;
     }
+
+.row-cart{
+    align-content:center;
+}
