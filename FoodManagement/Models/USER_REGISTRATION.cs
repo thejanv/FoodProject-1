@@ -11,7 +11,8 @@ namespace FoodManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class USER_REGISTRATION
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,14 +21,22 @@ namespace FoodManagement.Models
             this.ADDTOCARTs = new HashSet<ADDTOCART>();
             this.PAIDITEMS = new HashSet<PAIDITEM>();
         }
-    
+
         public int USERID { get; set; }
+        [Required(ErrorMessage = "Name is Required")]
         public string NAME { get; set; }
+        [Required(ErrorMessage = "Email is Required")]
+        [DataType(DataType.EmailAddress)]
         public string EMAIL { get; set; }
+        [Required(ErrorMessage = "Mobile number is Required")]
+        [StringLength(10, ErrorMessage = "Mobile length must be 10 digits")]
         public string MOBILE { get; set; }
+        [Required(ErrorMessage = "Password is Required")]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", ErrorMessage = "Password is not strong")]
         public string PASSWORD { get; set; }
+        [Required(ErrorMessage = "Address is Required")]
         public string ADDRESS { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ADDTOCART> ADDTOCARTs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
