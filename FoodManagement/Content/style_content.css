@@ -75,8 +75,14 @@
 
 #header-navbar .nav-item {
     padding: 5px 10px;
+    color:azure;
 }
-
+.nav-link{
+    color:azure;
+}
+#icon{
+    color:aliceblue;
+}
 #name {
     margin-right: 5px;
     margin-top: 4px;
